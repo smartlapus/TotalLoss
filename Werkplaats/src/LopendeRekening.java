@@ -5,6 +5,6 @@ public class LopendeRekening {
 	private int hoeveelheid;
 	
 	public double berekenBedrag(){
-		
+		return 0.0;
 	}
 }
