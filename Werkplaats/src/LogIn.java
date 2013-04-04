@@ -3,6 +3,9 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 
-public class LogIn extends JFrame implements ActionListener {
+public class LogIn extends JFrame implements ActionListener, KeyListener {
 	
 	private static final long serialVersionUID = -6748834332506278417L;
 	private JTextField userName;
@@ -37,22 +40,21 @@ public class LogIn extends JFrame implements ActionListener {
 		setLayout(new FlowLayout());
 		setSize(500, 400);
 		setLocationRelativeTo(null);
+		
 		space2 = new JLabel("                                            "); add(space2);
 		ImageIcon imglogo = new ImageIcon("ATD logo.png");
 		JLabel imageLabel = new JLabel(imglogo); add(imageLabel);
 		
+		
 		inputPanel = new JPanel();
 		
-		//inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS));
 		inputPanel.setAlignmentX(CENTER_ALIGNMENT);
 		inputPanel.setPreferredSize(new Dimension(200, 150));
-		//TitledBorder lineBorder = BorderFactory.createTitledBorder("Log In");
-		//inputPanel.setBorder(lineBorder);
 		add(inputPanel);
 		
 		space = new JLabel("                   "); inputPanel.add(space);
 		userName = new JTextField(15); inputPanel.add(userName);
-		password = new JPasswordField(15); inputPanel.add(password);
+		password = new JPasswordField(15); inputPanel.add(password); password.addKeyListener(this);
 		logInButton = new JButton("Log in"); inputPanel.add(logInButton);
 		logInButton.addActionListener(this);
 		
@@ -60,6 +62,7 @@ public class LogIn extends JFrame implements ActionListener {
 		setIconImage(imglogo.getImage());
 		setTitle("AutoTotaalDiensten - Inloggen"); 
 		setVisible(true);
+		
 	}
 
 	@Override
@@ -80,4 +83,39 @@ public class LogIn extends JFrame implements ActionListener {
 		
 	}
 
+	@Override
+	public void keyPressed(KeyEvent type) {
+		s = userName.getText();
+		char[] p = password.getPassword();
+		String a = String.copyValueOf(p);
+		if(type.getKeyCode() == KeyEvent.VK_ENTER && s.equals("admin") && a.equals("admin")){
+			Hoofdmenu ingelogd = new Hoofdmenu();
+		}
+		
+		if(type.getKeyCode() == KeyEvent.VK_ENTER && !s.equals("admin") && !a.equals("admin")){
+			 JOptionPane.showMessageDialog(null, "De login bestaat niet.");
+		}
+		
+		if(type.getKeyCode() == KeyEvent.VK_ENTER && s.equals("admin") && !a.equals("admin")){
+			 JOptionPane.showMessageDialog(null, "De login bestaat niet.");
+		}
+		
+		if(type.getKeyCode() == KeyEvent.VK_ENTER && !s.equals("admin") && a.equals("admin")){
+			 JOptionPane.showMessageDialog(null, "De login bestaat niet.");
+		}
+		
+	}
+		
+	
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent type) {
+		
+	}
 }
