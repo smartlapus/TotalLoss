@@ -67,7 +67,7 @@ public class LogIn extends JFrame implements ActionListener {
 		s = userName.getText();
 		char[] p = password.getPassword();
 		String a = String.copyValueOf(p);
-		if(click.getSource() == logInButton && s.equals("Dion Iseger") && a.equals("123"))
+		if(click.getSource() == logInButton && s.equals("admin") && a.equals("admin"))
 		{
 			Hoofdmenu ingelogd = new Hoofdmenu();
 		} 
