@@ -73,6 +73,7 @@ public class LogIn extends JFrame implements ActionListener, KeyListener {
 		if(click.getSource() == logInButton && s.equals("admin") && a.equals("admin"))
 		{
 			Hoofdmenu ingelogd = new Hoofdmenu();
+			this.dispose();
 		} 
 		
 		else
@@ -90,6 +91,7 @@ public class LogIn extends JFrame implements ActionListener, KeyListener {
 		String a = String.copyValueOf(p);
 		if(type.getKeyCode() == KeyEvent.VK_ENTER && s.equals("admin") && a.equals("admin")){
 			Hoofdmenu ingelogd = new Hoofdmenu();
+			this.dispose();
 		}
 		
 		if(type.getKeyCode() == KeyEvent.VK_ENTER && !s.equals("admin") && !a.equals("admin")){

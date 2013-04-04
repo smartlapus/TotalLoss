@@ -95,46 +95,58 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent click) {
 		if(click.getSource() == menuItemAgenda1){
 			AgendaFrame agenda = new AgendaFrame();
+			this.dispose();
 		} 
 		
 		if(click.getSource() == menuItemKlus1){
 			KlusToevoegenFrame klustoevoegen = new KlusToevoegenFrame();
+			this.dispose();
 		}
 		if(click.getSource() == menuItemKlus2){
 			KlusOverzichtFrame klusoverzicht = new KlusOverzichtFrame();
+			this.dispose();
 		}
 		
 		if(click.getSource() == menuItemKlant1){
 			KlantOverzichtFrame klantoverzicht = new KlantOverzichtFrame();
+			this.dispose();
 		}
 		
 		if(click.getSource() == menuItemKlant2){
 			KlantToevoegenFrame klanttoevoegen = new KlantToevoegenFrame();
+			this.dispose();
 		}
 		
 		if(click.getSource() == menuItemKlant3){
 			KlantVerwijderenFrame klantverwijderen = new KlantVerwijderenFrame();
+			this.dispose();
 		}
 		
 		if(click.getSource() == menuItemMedewerker1){
 			MedewerkerOverzichtFrame medewerkeroverzicht = new MedewerkerOverzichtFrame();
+			this.dispose();
 		}
 		
 		if(click.getSource() == menuItemMedewerker2){
 			MedewerkerToevoegenFrame Medewerkertoevoegen = new MedewerkerToevoegenFrame();
+			this.dispose();
 		}
 		
 		if(click.getSource() == menuItemMedewerker3){
 			MedewerkerVerwijderenFrame Medewerkerverwijderen = new MedewerkerVerwijderenFrame();
+			this.dispose();
 		}
 		if(click.getSource() == menuItemParkeergarage1){
 			BezettingOpvragenFrame bezettingopvragen = new BezettingOpvragenFrame();
+			this.dispose();
 		}
 		if(click.getSource() == menuItemBeheer1){
 			FinancieelOverzichtFrame financieeloverzicht = new FinancieelOverzichtFrame();
+			this.dispose();
 		}
 		if(click.getSource() == menuItemBeheer2){
 			VoorraadOverzichtFrame voorraadoverzicht = new VoorraadOverzichtFrame();
+			this.dispose();
 		}
 		
 	}
