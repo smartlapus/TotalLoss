@@ -2,9 +2,9 @@ import java.awt.event.ActionListener;
 
 public class VoorraadOverzichtFrame extends Hoofdmenu implements ActionListener {
 
-	public VoorraadOverzichtFrame()
+	public VoorraadOverzichtFrame(Bedrijf b)
 	{
-		super();
+		super(b);
 		setTitle("AutoTotaalDiensten - Voorraad");
 	}
 

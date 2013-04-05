@@ -14,13 +14,13 @@ public class MedewerkerToevoegenFrame extends Hoofdmenu implements ActionListene
 	private JButton cancelbutton, savebutton;
 
 	
-	public MedewerkerToevoegenFrame(){
-		super();
+	public MedewerkerToevoegenFrame(Bedrijf b){
+		super(b);
 		setTitle("AutoTotaalDiensten - Medewerker Toevoegen");
 		
 		JLabel l;
 	    JTextField t;
-	    JButton b;
+	    //JButton b;
 	     Container cp = getContentPane();
 	    cp.setLayout(new GridBagLayout());
 	    cp.setBackground(UIManager.getColor("control"));
@@ -47,8 +47,8 @@ public class MedewerkerToevoegenFrame extends Hoofdmenu implements ActionListene
 	    l.setDisplayedMnemonic('t');
 	    cp.add(l = new JLabel("Tel. nummer:", SwingConstants.RIGHT), c);
 	    l.setDisplayedMnemonic('m');
-	    cp.add(b = new JButton("Clear"), c);
-	    b.setMnemonic('l');
+	    cp.add(cancelbutton = new JButton("Clear"), c);
+	    cancelbutton.setMnemonic('l');
 
 	    c.gridx = 1;
 	    c.gridy = 0;
@@ -74,8 +74,8 @@ public class MedewerkerToevoegenFrame extends Hoofdmenu implements ActionListene
 	    t.setFocusAccelerator('m');
 	    c.weightx = 0.0;
 	    c.fill = GridBagConstraints.NONE;
-	    cp.add(b = new JButton("Opslaan"), c);
-	    b.setMnemonic('o');
+	    cp.add(savebutton = new JButton("Opslaan"), c);
+	    savebutton.setMnemonic('o');
 
 
 	}

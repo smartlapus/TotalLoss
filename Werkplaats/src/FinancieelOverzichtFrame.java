@@ -2,9 +2,9 @@ import java.awt.event.ActionListener;
 
 public class FinancieelOverzichtFrame extends Hoofdmenu implements ActionListener {
 
-	public FinancieelOverzichtFrame()
+	public FinancieelOverzichtFrame(Bedrijf b)
 	{
-		super();
+		super(b);
 		setTitle("AutoTotaalDiensten - Financieel Overzicht");
 	}
 

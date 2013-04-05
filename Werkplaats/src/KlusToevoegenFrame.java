@@ -4,17 +4,18 @@ import javax.swing.*;
 import java.awt.*;
 
 public class KlusToevoegenFrame extends Hoofdmenu implements ActionListener{
+
 	private JLabel naam, werkzaamheden, kenteken, datum;
 	private JTextField naamInvoer, werkzaamhedenInvoer, kentekenInvoer, datumInvoer;
 	private JButton cancelbutton, savebutton;
-	
-	public KlusToevoegenFrame(){
-		super();
+
+	public KlusToevoegenFrame(Bedrijf b){
+		super(b);
 		setTitle("AutoTotaalDiensten - Klus Toevoegen");
 		
 		JLabel l;
 	    JTextField t;
-	    JButton b;
+	    //JButton b;
 	    Container cp = getContentPane();
 	    cp.setLayout(new GridBagLayout());
 	    cp.setBackground(UIManager.getColor("control"));
@@ -35,8 +36,8 @@ public class KlusToevoegenFrame extends Hoofdmenu implements ActionListener{
 	    l.setDisplayedMnemonic('k');
 	    cp.add(l = new JLabel("Datum:", SwingConstants.RIGHT), c);
 	    l.setDisplayedMnemonic('s');
-	    cp.add(b = new JButton("Clear"), c);
-	    b.setMnemonic('1');
+	    //cp.add(b = new JButton("Clear"), c);
+	    //b.setMnemonic('1');
 	    c.gridx = 1;
 	    c.gridy = 0;
 	    c.weightx = 1.0;
@@ -56,7 +57,7 @@ public class KlusToevoegenFrame extends Hoofdmenu implements ActionListener{
 	    t.setFocusAccelerator('s');
 	    c.weightx = 0.0;
 	    c.fill = GridBagConstraints.NONE;
-	    cp.add(b = new JButton("OK"), c);
-	    b.setMnemonic('o');
+	    //cp.add(b = new JButton("OK"), c);
+	   //b.setMnemonic('o');
 	}
 }

@@ -19,8 +19,10 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 	private JMenuItem menuItemMedewerker1, menuItemMedewerker2, menuItemMedewerker3;
 	private JMenuItem menuItemParkeergarage1;
 	private JMenuItem menuItemBeheer1, menuItemBeheer2;
+	protected Bedrijf hetBedrijf;
 	
-	public Hoofdmenu(){
+	public Hoofdmenu(Bedrijf b){
+		hetBedrijf = b;	
 		setLayout(new FlowLayout());
 		setSize(520, 400);
 		setLocationRelativeTo(null);
@@ -94,61 +96,65 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent click) {
 		if(click.getSource() == menuItemAgenda1){
-			AgendaFrame agenda = new AgendaFrame();
+			AgendaFrame agenda = new AgendaFrame(hetBedrijf);
 			this.dispose();
 		} 
 		
 		if(click.getSource() == menuItemKlus1){
-			KlusToevoegenFrame klustoevoegen = new KlusToevoegenFrame();
+			KlusToevoegenFrame klustoevoegen = new KlusToevoegenFrame(hetBedrijf);
 			this.dispose();
 		}
 		if(click.getSource() == menuItemKlus2){
-			KlusOverzichtFrame klusoverzicht = new KlusOverzichtFrame();
+			KlusOverzichtFrame klusoverzicht = new KlusOverzichtFrame(hetBedrijf);
 			this.dispose();
 		}
 		
 		if(click.getSource() == menuItemKlant1){
-			KlantOverzichtFrame klantoverzicht = new KlantOverzichtFrame();
+			KlantOverzichtFrame klantoverzicht = new KlantOverzichtFrame(hetBedrijf);
 			this.dispose();
 		}
 		
 		if(click.getSource() == menuItemKlant2){
-			KlantToevoegenFrame klanttoevoegen = new KlantToevoegenFrame();
+			KlantToevoegenFrame klanttoevoegen = new KlantToevoegenFrame(hetBedrijf);
 			this.dispose();
 		}
 		
 		if(click.getSource() == menuItemKlant3){
-			KlantVerwijderenFrame klantverwijderen = new KlantVerwijderenFrame();
+			KlantVerwijderenFrame klantverwijderen = new KlantVerwijderenFrame(hetBedrijf);
 			this.dispose();
 		}
 		
 		if(click.getSource() == menuItemMedewerker1){
-			MedewerkerOverzichtFrame medewerkeroverzicht = new MedewerkerOverzichtFrame();
+			MedewerkerOverzichtFrame medewerkeroverzicht = new MedewerkerOverzichtFrame(hetBedrijf);
 			this.dispose();
 		}
 		
 		if(click.getSource() == menuItemMedewerker2){
-			MedewerkerToevoegenFrame Medewerkertoevoegen = new MedewerkerToevoegenFrame();
+			MedewerkerToevoegenFrame Medewerkertoevoegen = new MedewerkerToevoegenFrame(hetBedrijf);
 			this.dispose();
 		}
 		
 		if(click.getSource() == menuItemMedewerker3){
-			MedewerkerVerwijderenFrame Medewerkerverwijderen = new MedewerkerVerwijderenFrame();
+			MedewerkerVerwijderenFrame Medewerkerverwijderen = new MedewerkerVerwijderenFrame(hetBedrijf);
 			this.dispose();
 		}
 		if(click.getSource() == menuItemParkeergarage1){
-			BezettingOpvragenFrame bezettingopvragen = new BezettingOpvragenFrame();
+			BezettingOpvragenFrame bezettingopvragen = new BezettingOpvragenFrame(hetBedrijf);
 			this.dispose();
 		}
 		if(click.getSource() == menuItemBeheer1){
-			FinancieelOverzichtFrame financieeloverzicht = new FinancieelOverzichtFrame();
+			FinancieelOverzichtFrame financieeloverzicht = new FinancieelOverzichtFrame(hetBedrijf);
 			this.dispose();
 		}
 		if(click.getSource() == menuItemBeheer2){
-			VoorraadOverzichtFrame voorraadoverzicht = new VoorraadOverzichtFrame();
+			VoorraadOverzichtFrame voorraadoverzicht = new VoorraadOverzichtFrame(hetBedrijf);
 			this.dispose();
 		}
 		
 	}
+	
+	public void setHetBoek(Bedrijf nwb) { 
+		hetBedrijf = nwb;
+	} 
 
 }

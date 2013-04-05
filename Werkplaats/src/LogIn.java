@@ -33,16 +33,17 @@ public class LogIn extends JFrame implements ActionListener, KeyListener {
 	private JPanel inputPanel;
 	private JLabel userNameLabel, passwordLabel, space, space2;
 	private String s; 
+	private Bedrijf hetBedrijf;
 	
 	
-	public LogIn(){
-		
+	public LogIn(Bedrijf b){
+		hetBedrijf = b;
 		setLayout(new FlowLayout());
 		setSize(500, 400);
 		setLocationRelativeTo(null);
 		
 		space2 = new JLabel("                                            "); add(space2);
-		ImageIcon imglogo = new ImageIcon("ATD logo.png");
+		ImageIcon imglogo = new ImageIcon("atd.png");
 		JLabel imageLabel = new JLabel(imglogo); add(imageLabel);
 		
 		
@@ -72,7 +73,7 @@ public class LogIn extends JFrame implements ActionListener, KeyListener {
 		String a = String.copyValueOf(p);
 		if(click.getSource() == logInButton && s.equals("") && a.equals(""))
 		{
-			Hoofdmenu ingelogd = new Hoofdmenu();
+			Hoofdmenu ingelogd = new Hoofdmenu(hetBedrijf);
 			this.dispose();
 		} 
 		
@@ -90,7 +91,7 @@ public class LogIn extends JFrame implements ActionListener, KeyListener {
 		char[] p = password.getPassword();
 		String a = String.copyValueOf(p);
 		if(type.getKeyCode() == KeyEvent.VK_ENTER && s.equals("admin") && a.equals("admin")){
-			Hoofdmenu ingelogd = new Hoofdmenu();
+			Hoofdmenu ingelogd = new Hoofdmenu(hetBedrijf);
 			this.dispose();
 		}
 		
@@ -108,7 +109,9 @@ public class LogIn extends JFrame implements ActionListener, KeyListener {
 		
 	}
 		
-	
+	public void setHetBoek(Bedrijf nwb) { 
+		hetBedrijf = nwb;
+	} 
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {

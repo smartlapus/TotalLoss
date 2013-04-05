@@ -1,3 +1,4 @@
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.*;
@@ -9,14 +10,13 @@ public class KlantToevoegenFrame extends Hoofdmenu implements ActionListener{
 	private JButton cancelbutton, savebutton;
 	
 	
-	
-	public KlantToevoegenFrame(){
-		super();
+	public KlantToevoegenFrame(Bedrijf b){
+		super(b);
 		setTitle("AutoTotaalDiensten - Klant Toevoegen");
 		
 		 	JLabel l;
-		    JTextField t;
-		    JButton b;
+		    //JTextField t;
+		    //JButton b;
 		     Container cp = getContentPane();
 		    cp.setLayout(new GridBagLayout());
 		    cp.setBackground(UIManager.getColor("control"));
@@ -43,8 +43,8 @@ public class KlantToevoegenFrame extends Hoofdmenu implements ActionListener{
 		    l.setDisplayedMnemonic('t');
 		    cp.add(l = new JLabel("Tel. nummer:", SwingConstants.RIGHT), c);
 		    l.setDisplayedMnemonic('m');
-		    cp.add(b = new JButton("Clear"), c);
-		    b.setMnemonic('l');
+		    cp.add(cancelbutton = new JButton("Clear"), c);
+		    cancelbutton.setMnemonic('l');
 
 		    c.gridx = 1;
 		    c.gridy = 0;
@@ -52,30 +52,55 @@ public class KlantToevoegenFrame extends Hoofdmenu implements ActionListener{
 		    c.fill = GridBagConstraints.HORIZONTAL;
 		    c.anchor = GridBagConstraints.CENTER;
 
-		    cp.add(t = new JTextField(35), c);
-		    t.setFocusAccelerator('n');
+		    cp.add(naaminvoer = new JTextField(35), c);
+		    naaminvoer.setFocusAccelerator('n');
 		    c.gridx = 1;
 		    c.gridy = GridBagConstraints.RELATIVE;
-		    cp.add(t = new JTextField(35), c);
-		    t.setFocusAccelerator('h');
-		    cp.add(t = new JTextField(35), c);
-		    t.setFocusAccelerator('c');
-		    cp.add(t = new JTextField(35), c);
-		    t.setFocusAccelerator('s');
-		    cp.add(t = new JTextField(35), c);
-		    t.setFocusAccelerator('z');
-		    cp.add(t = new JTextField(35), c);
-		    t.setFocusAccelerator('t');
-		    cp.add(t = new JTextField(35), c);
-		    t.setFocusAccelerator('m');
+		    cp.add(achternaaminvoer = new JTextField(35), c);
+		    achternaaminvoer.setFocusAccelerator('h');
+		    cp.add(postcodeinvoer = new JTextField(35), c);
+		    postcodeinvoer.setFocusAccelerator('c');
+		    cp.add(huisnummerinvoer = new JTextField(35), c);
+		    huisnummerinvoer.setFocusAccelerator('s');
+		    cp.add(plaatsinvoer = new JTextField(35), c);
+		    plaatsinvoer.setFocusAccelerator('z');
+		    cp.add(emailinvoer = new JTextField(35), c);
+		    emailinvoer.setFocusAccelerator('t');
+		    cp.add(telnummerinvoer = new JTextField(35), c);
+		    telnummerinvoer.setFocusAccelerator('m');
 		    c.weightx = 0.0;
 		    c.fill = GridBagConstraints.NONE;
-		    cp.add(b = new JButton("OK"), c);
-		    b.setMnemonic('o');
+		    cp.add(savebutton = new JButton("OK"), c);
+		    savebutton.setMnemonic('o');
 
-		    
+		    cancelbutton.addActionListener(this);
+		    savebutton.addActionListener(this);
 		
 		
+	}
+	public void actionPerformed(ActionEvent click){
+		if(click.getSource() == cancelbutton){
+			naaminvoer.setText("");
+			achternaaminvoer.setText("");
+			postcodeinvoer.setText("");
+			huisnummerinvoer.setText("");
+			plaatsinvoer.setText("");
+			emailinvoer.setText("");
+			telnummerinvoer.setText("");
+		}
+		
+		if(click.getSource() == savebutton){
+			Klant nwk = null; 
+			String vnm = naaminvoer.getText();  
+			String anm = achternaaminvoer.getText();
+			String pcode = postcodeinvoer.getText(); 
+			String huisnr = huisnummerinvoer.getText(); 
+			String plts = plaatsinvoer.getText(); 
+			String mail = emailinvoer.getText(); 
+			String telnr = telnummerinvoer.getText(); 
+			nwk = new Klant(vnm, anm, pcode, huisnr, plts, mail, telnr);
+			hetBedrijf.voegKlantToe(nwk);
+		}
 	}
 	
 }
