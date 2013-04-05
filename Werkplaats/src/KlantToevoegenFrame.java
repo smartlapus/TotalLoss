@@ -41,7 +41,7 @@ public class KlantToevoegenFrame extends Hoofdmenu implements ActionListener{
 		    l.setDisplayedMnemonic('z');
 		    cp.add(l = new JLabel("Email:", SwingConstants.RIGHT), c);
 		    l.setDisplayedMnemonic('t');
-		    cp.add(l = new JLabel("Tel.nummer:", SwingConstants.RIGHT), c);
+		    cp.add(l = new JLabel("Tel. nummer:", SwingConstants.RIGHT), c);
 		    l.setDisplayedMnemonic('m');
 		    cp.add(b = new JButton("Clear"), c);
 		    b.setMnemonic('l');
