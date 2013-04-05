@@ -7,13 +7,14 @@ public class Bedrijf {
 	private String adres;
 	protected ArrayList<Klant> alleKlanten;
 	private ArrayList<Klus> alleKlussen;
-	private ArrayList<Monteur> alleMonteurs;
+	protected ArrayList<Monteur> alleMonteurs;
 	
 	
 	public Bedrijf(String nm, String adrs){
 		naam = nm;
 		adres = adrs;
 		alleKlanten = new ArrayList<Klant>();
+		alleMonteurs = new ArrayList<Monteur>();
 	}
 	
 	public String getNaam() {
@@ -41,8 +42,13 @@ public class Bedrijf {
 		}
 	}
 	
-	public void voegMonteurToe(){
-		
+	public void voegMonteurToe(Monteur medewerker){
+		if(!alleMonteurs.contains(medewerker))
+		{
+			alleMonteurs.add(medewerker);
+			System.out.println("Monteur is toegevoegd");
+			System.out.println(alleMonteurs);
+		}
 	}
 	
 	public void voegAfspraakToe(){
