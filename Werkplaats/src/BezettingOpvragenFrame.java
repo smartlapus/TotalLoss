@@ -15,10 +15,9 @@ public class BezettingOpvragenFrame extends Hoofdmenu implements ActionListener 
 	private JComboBox boxDag = new JComboBox(dag);
 	private JComboBox boxMaand = new JComboBox(maand);
 	private JComboBox boxJaar = new JComboBox(jaar);
-	private JLabel lDag = new JLabel("dag"); 
-	private JLabel lMaand = new JLabel("maand"); 
-	private JLabel lJaar = new JLabel("jaar"); 
-	private JButton Opvragen = new JButton("Opvragen");
+	JButton Opvragen;
+	JLabel lDag, lMaand, lJaar;
+
 	public BezettingOpvragenFrame()
 	{
 		super();
@@ -28,16 +27,28 @@ public class BezettingOpvragenFrame extends Hoofdmenu implements ActionListener 
 		cp.setBackground(UIManager.getColor("control"));
 		GridBagConstraints c = new GridBagConstraints();
 
-		c.gridx = 1;
-		c.gridy = GridBagConstraints.RELATIVE;
-		c.gridwidth = 1;
-		c.gridheight = 2;
-		c.insets = new Insets(2, 2, 2, 2);
-		c.anchor = GridBagConstraints.EAST;
-		
 		//Labels, Comboboxen en button worden toegevoegd aan de container
-		cp.add(lDag); cp.add(lMaand);cp.add(lJaar);
+		
+		lDag = new JLabel("Dag");
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 0.5;
+		c.gridheight = 2;
+		cp.add(lDag, c);
+		
+		lMaand = new JLabel("Maand");
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 0.5;
+		c.gridheight = 2;
+		cp.add(lMaand, c);
+		
+		lJaar = new JLabel("Jaar");
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady = 40;
+		c.weightx = 1;
+		c.gridheight = 2;
+		cp.add(lJaar, c);
+		
 		cp.add(boxDag);cp.add(boxMaand);cp.add(boxJaar);
-		cp.add(Opvragen);
+
 	}
 }
