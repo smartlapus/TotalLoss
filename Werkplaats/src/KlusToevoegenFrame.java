@@ -36,7 +36,7 @@ public class KlusToevoegenFrame extends Hoofdmenu implements ActionListener{
 	    cp.add(l = new JLabel("Datum:", SwingConstants.RIGHT), c);
 	    l.setDisplayedMnemonic('s');
 	    cp.add(b = new JButton("Clear"), c);
-	    b.setMnemonic('l');
+	    b.setMnemonic('1');
 	    c.gridx = 1;
 	    c.gridy = 0;
 	    c.weightx = 1.0;
@@ -59,5 +59,4 @@ public class KlusToevoegenFrame extends Hoofdmenu implements ActionListener{
 	    cp.add(b = new JButton("OK"), c);
 	    b.setMnemonic('o');
 	}
-
 }
