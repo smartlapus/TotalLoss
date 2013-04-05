@@ -28,27 +28,25 @@ public class BezettingOpvragenFrame extends Hoofdmenu implements ActionListener 
 		GridBagConstraints c = new GridBagConstraints();
 
 		//Labels, Comboboxen en button worden toegevoegd aan de container
-		
+		cp.add(boxDag);cp.add(boxMaand);cp.add(boxJaar);
 		lDag = new JLabel("Dag");
 		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.5;
-		c.gridheight = 2;
+		c.gridy = 2;
 		cp.add(lDag, c);
 		
 		lMaand = new JLabel("Maand");
 		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.5;
-		c.gridheight = 2;
 		cp.add(lMaand, c);
 		
 		lJaar = new JLabel("Jaar");
 		c.fill = GridBagConstraints.HORIZONTAL;
-		c.ipady = 40;
-		c.weightx = 1;
-		c.gridheight = 2;
 		cp.add(lJaar, c);
 		
-		cp.add(boxDag);cp.add(boxMaand);cp.add(boxJaar);
-
+		Opvragen = new JButton("Opvragen");
+		c.weightx = 0.0;
+		c.gridwidth = 0;
+		c.gridx = 0;
+		c.gridy = 4;
+		cp.add(Opvragen, c);
 	}
 }

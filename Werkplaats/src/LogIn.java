@@ -70,7 +70,7 @@ public class LogIn extends JFrame implements ActionListener, KeyListener {
 		s = userName.getText();
 		char[] p = password.getPassword();
 		String a = String.copyValueOf(p);
-		if(click.getSource() == logInButton && s.equals("admin") && a.equals("admin"))
+		if(click.getSource() == logInButton && s.equals("") && a.equals(""))
 		{
 			Hoofdmenu ingelogd = new Hoofdmenu();
 			this.dispose();
