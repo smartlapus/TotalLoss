@@ -19,16 +19,16 @@ public class BezettingOpvragenFrame extends Hoofdmenu implements ActionListener 
 	private JLabel lMaand = new JLabel("maand"); 
 	private JLabel lJaar = new JLabel("jaar"); 
 	private JButton Opvragen = new JButton("Opvragen");
-	public BezettingOpvragenFrame()
+	public BezettingOpvragenFrame(Bedrijf b)
 	{
-		super();
+		super(b);
 		setTitle("AutoTotaalDiensten - Bezettingen opvragen");
 		Container cp = getContentPane();
 		cp.setLayout(new GridBagLayout());
 		cp.setBackground(UIManager.getColor("control"));
 		GridBagConstraints c = new GridBagConstraints();
 
-<<<<<<< HEAD
+
 		//Labels, Comboboxen en button worden toegevoegd aan de container
 		cp.add(boxDag);cp.add(boxMaand);cp.add(boxJaar);
 		lDag = new JLabel("Dag");
@@ -50,7 +50,7 @@ public class BezettingOpvragenFrame extends Hoofdmenu implements ActionListener 
 		c.gridx = 0;
 		c.gridy = 4;
 		cp.add(Opvragen, c);
-=======
+
 		c.gridx = 1;
 		c.gridy = GridBagConstraints.RELATIVE;
 		c.gridwidth = 1;
@@ -62,6 +62,6 @@ public class BezettingOpvragenFrame extends Hoofdmenu implements ActionListener 
 		cp.add(lDag); cp.add(lMaand);cp.add(lJaar);
 		cp.add(boxDag);cp.add(boxMaand);cp.add(boxJaar);
 		cp.add(Opvragen);
->>>>>>> Ander logo en werkende klant toevoegen
+
 	}
 }
