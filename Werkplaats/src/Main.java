@@ -20,9 +20,25 @@ public class Main {
 		hetBedrijf.voegMonteurToe(m3);
 		hetBedrijf.voegMonteurToe(m2);
 		
+		Financien f1 = new Financien(1, "Af", 275, "14-01-2013");
+		Financien f2 = new Financien(1, "Bij", 530, "19-02-2013");
+		Financien f3 = new Financien(1, "Af", 120, "26-03-2013");
+		Financien f4 = new Financien(1, "Bij", 230, "28-03-2013");
+		Financien f5 = new Financien(2, "Af", 720, "29-04-2013");
+		Financien f6 = new Financien(2, "Af", 200, "05-05-2013");
+		Financien f7 = new Financien(3, "Bij", 420, "10-08-2013");
+		Financien f8 = new Financien(3, "Af", 230, "16-07-2013");
+		hetBedrijf.voegFinancienToe(f1);
+		hetBedrijf.voegFinancienToe(f2);
+		hetBedrijf.voegFinancienToe(f3);
+		hetBedrijf.voegFinancienToe(f4);
+		hetBedrijf.voegFinancienToe(f5);
+		hetBedrijf.voegFinancienToe(f6);
+		hetBedrijf.voegFinancienToe(f7);
+		hetBedrijf.voegFinancienToe(f8);
+		
 		LogIn log = new LogIn(hetBedrijf);
 		
-
 	}
 
 }

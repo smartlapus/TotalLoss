@@ -8,12 +8,14 @@ public class Bedrijf {
 	protected ArrayList<Klant> alleKlanten;
 	protected ArrayList<Klus> alleKlussen;
 	protected ArrayList<Monteur> alleMonteurs;
+	protected ArrayList<Financien> alleFinancien;
 	
 	public Bedrijf(String nm, String adrs){
 		naam = nm;
 		adres = adrs;
 		alleKlanten = new ArrayList<Klant>();
 		alleMonteurs = new ArrayList<Monteur>();
+		alleFinancien = new ArrayList<Financien>();
 	}
 	
 	public ArrayList<Klant> getAlleKlanten() {
@@ -26,6 +28,10 @@ public class Bedrijf {
 
 	public ArrayList<Monteur> getAlleMonteurs() {
 		return alleMonteurs;
+	}
+	
+	public ArrayList<Financien> getAlleFinancien() {
+		return alleFinancien;
 	}
 	
 	public String getNaam() {
@@ -59,6 +65,13 @@ public class Bedrijf {
 			alleMonteurs.add(medewerker);
 			System.out.println("Monteur is toegevoegd");
 			System.out.println(alleMonteurs);
+		}
+	}
+	
+	public void voegFinancienToe(Financien fin){
+		if(!alleFinancien.contains(fin))
+		{
+			alleFinancien.add(fin);
 		}
 	}
 	
