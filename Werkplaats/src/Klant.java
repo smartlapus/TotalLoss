@@ -12,6 +12,11 @@ public class Klant {
 		email = mail;
 		telnummer = telnr;	
 	}
+	
+	public Klant(String vnm, String anm){
+		voornaam = vnm;
+		achternaam = anm;
+	}
 
 	public String getVoornaam() {
 		return voornaam;
@@ -70,6 +75,14 @@ public class Klant {
 	}
 	
 	
+	public String toString(){
+		String s = voornaam + " " + achternaam;
+		return s;
+		
+	}
 	
-	
+	public String toStringAlleGegevens(){
+		String aG = voornaam + " " + achternaam + ". \n " + postcode + " " + huisnr + " " + plaats + ". \n " + email + ", " + telnummer; 
+		return aG;
+	}
 }

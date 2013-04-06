@@ -6,15 +6,26 @@ public class Bedrijf {
 	private String naam;
 	private String adres;
 	protected ArrayList<Klant> alleKlanten;
-	private ArrayList<Klus> alleKlussen;
+	protected ArrayList<Klus> alleKlussen;
 	protected ArrayList<Monteur> alleMonteurs;
-	
 	
 	public Bedrijf(String nm, String adrs){
 		naam = nm;
 		adres = adrs;
 		alleKlanten = new ArrayList<Klant>();
 		alleMonteurs = new ArrayList<Monteur>();
+	}
+	
+	public ArrayList<Klant> getAlleKlanten() {
+		return alleKlanten;
+	}
+
+	public ArrayList<Klus> getAlleKlussen() {
+		return alleKlussen;
+	}
+
+	public ArrayList<Monteur> getAlleMonteurs() {
+		return alleMonteurs;
 	}
 	
 	public String getNaam() {

@@ -87,8 +87,8 @@ public class Monteur {
 		this.reknummer = reknummer;
 	}
 	
-	
-	
-	
-	
+	public String toString(){
+		String s = voornaam + " " + achternaam;
+		return s;
+	}
 }
