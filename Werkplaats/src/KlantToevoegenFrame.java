@@ -6,7 +6,7 @@ import java.awt.*;
 public class KlantToevoegenFrame extends Hoofdmenu implements ActionListener{
 
 	private JLabel naam, achternaam, postcode, huisnummer, plaats, email, telnummer;
-	private JTextField naaminvoer, achternaaminvoer, postcodeinvoer, huisnummerinvoer, plaatsinvoer, emailinvoer, telnummerinvoer;
+	private JTextField naaminvoer, achternaaminvoer, postcodeinvoer, huisnummerinvoer, plaatsinvoer, emailinvoer, telnummerinvoer, merkinvoer, typeinvoer, bouwjaarinvoer;
 	private JButton cancelbutton, savebutton;
 	
 	
@@ -43,6 +43,12 @@ public class KlantToevoegenFrame extends Hoofdmenu implements ActionListener{
 		    l.setDisplayedMnemonic('t');
 		    cp.add(l = new JLabel("Tel. nummer:", SwingConstants.RIGHT), c);
 		    l.setDisplayedMnemonic('m');
+		    cp.add(l = new JLabel("Auto Merk:", SwingConstants.RIGHT), c);
+		    l.setDisplayedMnemonic('m');
+		    cp.add(l = new JLabel("Type:", SwingConstants.RIGHT), c);
+		    l.setDisplayedMnemonic('m');
+		    cp.add(l = new JLabel("Bouwjaar:", SwingConstants.RIGHT), c);
+		    l.setDisplayedMnemonic('m');
 		    cp.add(cancelbutton = new JButton("Clear"), c);
 		    cancelbutton.setMnemonic('l');
 
@@ -68,6 +74,12 @@ public class KlantToevoegenFrame extends Hoofdmenu implements ActionListener{
 		    emailinvoer.setFocusAccelerator('t');
 		    cp.add(telnummerinvoer = new JTextField(35), c);
 		    telnummerinvoer.setFocusAccelerator('m');
+		    cp.add(merkinvoer = new JTextField(35), c);
+		    merkinvoer.setFocusAccelerator('m');
+		    cp.add(typeinvoer = new JTextField(35), c);
+		    typeinvoer.setFocusAccelerator('m');
+		    cp.add(bouwjaarinvoer = new JTextField(35), c);
+		    bouwjaarinvoer.setFocusAccelerator('m');
 		    c.weightx = 0.0;
 		    c.fill = GridBagConstraints.NONE;
 		    cp.add(savebutton = new JButton("OK"), c);
@@ -87,20 +99,29 @@ public class KlantToevoegenFrame extends Hoofdmenu implements ActionListener{
 			plaatsinvoer.setText("");
 			emailinvoer.setText("");
 			telnummerinvoer.setText("");
+			merkinvoer.setText("");
+			typeinvoer.setText("");
+			bouwjaarinvoer.setText("");
 			JOptionPane.showMessageDialog(null, "Toevoegen is geannuleerd");
 		}
 		
 		if(click.getSource() == savebutton){
 			Klant nwk = null; 
+			Auto nwa = null;
 			String vnm = naaminvoer.getText();  
 			String anm = achternaaminvoer.getText();
 			String pcode = postcodeinvoer.getText(); 
 			String huisnr = huisnummerinvoer.getText(); 
 			String plts = plaatsinvoer.getText(); 
 			String mail = emailinvoer.getText(); 
-			String telnr = telnummerinvoer.getText(); 
+			String telnr = telnummerinvoer.getText();
+			String merk = merkinvoer.getText();
+			String type = typeinvoer.getText();
+			String bouwjaar = bouwjaarinvoer.getText();
 			nwk = new Klant(vnm, anm, pcode, huisnr, plts, mail, telnr);
+			nwa = new Auto(merk, type, bouwjaar);
 			hetBedrijf.voegKlantToe(nwk);
+			nwk.setAuto(nwa);
 			JOptionPane.showMessageDialog(null, "Klant is succesvol toegevoegd");
 			KlantOverzichtFrame klantoverzicht = new KlantOverzichtFrame(hetBedrijf);
 			this.dispose();

@@ -2,6 +2,7 @@
 public class Klant {
 	
 	private String voornaam, achternaam, postcode, huisnr, plaats, email, telnummer;
+	protected Auto auto;
 
 	public Klant(String vnm, String anm, String pcode, String hnr, String plts, String mail, String telnr){
 		voornaam = vnm;
@@ -73,8 +74,15 @@ public class Klant {
 	public void setTelnummer(String telnummer) {
 		this.telnummer = telnummer;
 	}
-	
-	
+		
+	public Auto getAuto() {
+		return auto;
+	}
+
+	public void setAuto(Auto auto) {
+		this.auto = auto;
+	}
+
 	public String toString(){
 		String s = voornaam + " " + achternaam;
 		return s;

@@ -9,6 +9,12 @@ public class Main {
 		Klant k1 = new Klant("Dion", "Iseger", "1234FD", "12", "De Bilt", "dion@d.nl", "0623645712");
 		Klant k2 = new Klant("Martin", "Bakker", "5634AD", "112", "Utrecht", "Martin@d.nl", "0612345678");
 		Klant k3 = new Klant("Jason", "Koolman", "4561MN", "65", "Utrecht", "Jason@bricks.com", "0694769372");
+		Auto a1 = new Auto("Audi", "A1", "2011");
+		Auto a2 = new Auto("Volvo", "V70", "2009");
+		Auto a3 = new Auto("Volkswagen", "Touran 'Politie'", "2013");
+		k1.setAuto(a3);
+		k2.setAuto(a2);
+		k3.setAuto(a1);
 		hetBedrijf.voegKlantToe(k1);
 		hetBedrijf.voegKlantToe(k2);
 		hetBedrijf.voegKlantToe(k3);

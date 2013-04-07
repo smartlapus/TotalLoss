@@ -23,6 +23,7 @@ public class MedewerkerOverzichtFrame extends Hoofdmenu implements ActionListene
 		super(b);
 		setTitle("AutoTotaalDiensten - Overzicht van Medewerkers");
 		setLayout(new BorderLayout());
+		setSize(520, 500);
 		
 		dropDownMedewerkers = new JComboBox(hetBedrijf.getAlleMonteurs().toArray(new Monteur[0]));
 		add(dropDownMedewerkers, BorderLayout.NORTH);

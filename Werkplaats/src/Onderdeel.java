@@ -1,5 +1,6 @@
 
 public class Onderdeel {
 
-		//moet nog in UML gezet worden
+		private String naam;
+		private double prijs;
 }

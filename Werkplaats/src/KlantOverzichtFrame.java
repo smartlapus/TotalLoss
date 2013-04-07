@@ -15,7 +15,7 @@ import javax.swing.border.TitledBorder;
 public class KlantOverzichtFrame extends Hoofdmenu implements ActionListener{
 
 	private JComboBox dropDownKlanten;
-	private JTextField tfVoor, tfAchter, tfEmail, tfPostcode, tfPlaats, tfHuisnummer, tfTelnummer;
+	private JTextField tfVoor, tfAchter, tfEmail, tfPostcode, tfPlaats, tfHuisnummer, tfTelnummer, tfAutomerk, tfAutojaar, tfAutotype;
 	private JPanel contactPanel;
 	private JButton pasAan, slaOp;
 	
@@ -23,6 +23,7 @@ public class KlantOverzichtFrame extends Hoofdmenu implements ActionListener{
 		super(b);
 		setTitle("AutoTotaalDiensten - Overzicht van klanten");
 		setLayout(new BorderLayout());
+		setSize(520, 500);
 		
 		dropDownKlanten = new JComboBox(hetBedrijf.getAlleKlanten().toArray(new Klant[0]));
 		add(dropDownKlanten, BorderLayout.NORTH);
@@ -30,7 +31,7 @@ public class KlantOverzichtFrame extends Hoofdmenu implements ActionListener{
 		
 		 contactPanel = new JPanel();
 		 contactPanel.setBorder(new TitledBorder( "Gegevens van de klant" )); 
-		 contactPanel.setLayout(new GridLayout(8, 2, 5, 5));
+		 contactPanel.setLayout(new GridLayout(11, 2, 5, 5));
 		 add(contactPanel, BorderLayout.SOUTH);
 		 
 		  JLabel l1 = new JLabel("Voornaam: "); contactPanel.add(l1);
@@ -52,7 +53,16 @@ public class KlantOverzichtFrame extends Hoofdmenu implements ActionListener{
 		  tfEmail = new JTextField(9); tfEmail.setEditable(false);   contactPanel.add(tfEmail); 
 		  
 		  JLabel l7 = new JLabel("Telefoonnummer: "); contactPanel.add(l7); 
-		  tfTelnummer = new JTextField(9); tfTelnummer.setEditable(false);   contactPanel.add(tfTelnummer); 
+		  tfTelnummer = new JTextField(9); tfTelnummer.setEditable(false);   contactPanel.add(tfTelnummer);
+		  
+		  JLabel l8 = new JLabel("Automerk: "); contactPanel.add(l8); 
+		  tfAutomerk = new JTextField(9); tfAutomerk.setEditable(false);   contactPanel.add(tfAutomerk);
+		  
+		  JLabel l9 = new JLabel("Type: "); contactPanel.add(l9); 
+		  tfAutotype = new JTextField(9); tfAutotype.setEditable(false);   contactPanel.add(tfAutotype);
+		  
+		  JLabel l10 = new JLabel("Bouwjaar: "); contactPanel.add(l10); 
+		  tfAutojaar = new JTextField(9); tfAutojaar.setEditable(false);   contactPanel.add(tfAutojaar); 
 		  
 		  pasAan = new JButton("Aanpassen"); contactPanel.add(pasAan); pasAan.addActionListener(this);
 		  slaOp = new JButton("Opslaan"); contactPanel.add(slaOp); slaOp.setVisible(false); slaOp.addActionListener(this);
@@ -70,6 +80,9 @@ public class KlantOverzichtFrame extends Hoofdmenu implements ActionListener{
 			tfHuisnummer.setText(k.getHuisnr());
 			tfPlaats.setText(k.getPlaats());
 			tfTelnummer.setText(k.getTelnummer());
+			tfAutomerk.setText(k.auto.getMerk());
+			tfAutotype.setText(k.auto.getType());
+			tfAutojaar.setText(k.auto.getBouwjaar());
 			}
 		
 		else{
@@ -80,6 +93,9 @@ public class KlantOverzichtFrame extends Hoofdmenu implements ActionListener{
 			tfHuisnummer.setText("");
 			tfPlaats.setText("");
 			tfTelnummer.setText("");
+			tfAutomerk.setText("");
+			tfAutotype.setText("");
+			tfAutojaar.setText("");
 			}
 	}
 		
@@ -97,6 +113,9 @@ public class KlantOverzichtFrame extends Hoofdmenu implements ActionListener{
 				tfHuisnummer.setEditable(true);
 				tfPlaats.setEditable(true);
 				tfTelnummer.setEditable(true);
+				tfAutomerk.setEditable(true);
+				tfAutotype.setEditable(true);
+				tfAutojaar.setEditable(true);
 				pasAan.setVisible(false);
 				slaOp.setVisible(true);
 			}
@@ -111,6 +130,9 @@ public class KlantOverzichtFrame extends Hoofdmenu implements ActionListener{
 					k.setHuisnr(tfHuisnummer.getText());
 					k.setPlaats(tfPlaats.getText());
 					k.setTelnummer(tfTelnummer.getText());
+					k.auto.setMerk(tfAutomerk.getText());
+					k.auto.setType(tfAutotype.getText());
+					k.auto.setBouwjaar(tfAutojaar.getText());
 					JOptionPane.showMessageDialog(null, "Klant is succesvol aangepast");
 					KlantOverzichtFrame klantoverzicht = new KlantOverzichtFrame(hetBedrijf);
 					this.dispose();

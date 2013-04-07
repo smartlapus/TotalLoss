@@ -18,7 +18,7 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 	protected JMenuItem menuItemKlant1, menuItemKlant2, menuItemKlant3;
 	protected JMenuItem menuItemMedewerker1, menuItemMedewerker2, menuItemMedewerker3;
 	protected JMenuItem menuItemParkeergarage1;
-	protected JMenuItem menuItemBeheer1, menuItemBeheer2;
+	protected JMenuItem menuItemBeheer1, menuItemBeheer2, menuItemBeheer3;
 	protected Bedrijf hetBedrijf;
 	
 	public Hoofdmenu(Bedrijf b){
@@ -72,6 +72,7 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 		//Menu Items voor Beheer
 		menuItemBeheer1 = new JMenuItem("Financieel overzicht"); menuBeheer.add(menuItemBeheer1);
 		menuItemBeheer2 = new JMenuItem("Voorraad overzicht"); menuBeheer.add(menuItemBeheer2);
+		menuItemBeheer3 = new JMenuItem("Lopende Rekeningen"); menuBeheer.add(menuItemBeheer3);
 		
 		//ActionListeners voor de Menu Items
 		menuItemAgenda1.addActionListener(this);
@@ -86,6 +87,7 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 		menuItemParkeergarage1.addActionListener(this);
 		menuItemBeheer1.addActionListener(this);
 		menuItemBeheer2.addActionListener(this);
+		menuItemBeheer3.addActionListener(this);
 		
 		setJMenuBar(menuBar);
 		setIconImage(imglogo.getImage());
@@ -95,7 +97,7 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent click) {
+	public void actionPerformed(ActionEvent click) {      
 		if(click.getSource() == menuItemAgenda1){
 			AgendaFrame agenda = new AgendaFrame(hetBedrijf);
 			this.dispose();
@@ -152,10 +154,15 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 			this.dispose();
 		}
 		
+		if(click.getSource() == menuItemBeheer3){
+			LopendeRekeningenFrame lopenderekeningen = new LopendeRekeningenFrame(hetBedrijf);
+			this.dispose();
+		}
+		
 	}
 	
 	public void setHetBoek(Bedrijf nwb) { 
 		hetBedrijf = nwb;
-	} 
+	}
 
 }
