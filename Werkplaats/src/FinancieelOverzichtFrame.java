@@ -1,13 +1,14 @@
-import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.*;
+import java.awt.*; 
+import java.awt.event.*; 
+import javax.swing.*; 
 
 import javax.swing.JComboBox;
+import javax.swing.border.TitledBorder;
 
 public class FinancieelOverzichtFrame extends Hoofdmenu implements ActionListener {
 	
 	private JComboBox dropDownKwartaal;
+	private JPanel p;
 	String[] kwartaalKeuze = { "Selecteer een kwartaal", "Eerste kwartaal", "Tweede kwartaal", "Derde kwartaal", "Vierde kwartaal" };
 
 	public FinancieelOverzichtFrame(Bedrijf b)
@@ -16,12 +17,17 @@ public class FinancieelOverzichtFrame extends Hoofdmenu implements ActionListene
 		setTitle("AutoTotaalDiensten - Financieel Overzicht");	
 		setLayout(new BorderLayout());
 		
+		p = new JPanel(); add(p, BorderLayout.CENTER); 
+		p.setPreferredSize(new Dimension(250, 100)); 
+		p.setBackground(Color.WHITE);
+		
 		dropDownKwartaal = new JComboBox(kwartaalKeuze);
 		add(dropDownKwartaal, BorderLayout.NORTH);
 		dropDownKwartaal.addActionListener(this);
 	}
 
 	public void actionPerformed(ActionEvent click) {
+		Graphics g = p.getGraphics();
 		if(dropDownKwartaal.getSelectedItem() == "Eerste kwartaal") {
 			for (Financien f : hetBedrijf.alleFinancien) { 
 				if (f.getKwartaal() == 1) { 
@@ -32,7 +38,7 @@ public class FinancieelOverzichtFrame extends Hoofdmenu implements ActionListene
 			for (Financien f : hetBedrijf.alleFinancien) { 
 				if (f.getKwartaal() == 2) { 
 					System.out.println(f);
-				} 
+				}
 			}
 		}else if(dropDownKwartaal.getSelectedItem() == "Derde kwartaal") {
 			for (Financien f : hetBedrijf.alleFinancien) { 
