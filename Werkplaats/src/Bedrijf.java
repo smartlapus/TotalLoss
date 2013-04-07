@@ -78,4 +78,8 @@ public class Bedrijf {
 	public void voegAfspraakToe(){
 		
 	}
+	public void vraagAgendaOp()
+	{
+		// Agenda dag + maand + jaar equals dag + maand + jaar van klus.
+	}
 }
