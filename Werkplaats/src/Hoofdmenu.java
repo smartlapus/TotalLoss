@@ -90,6 +90,7 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 		setJMenuBar(menuBar);
 		setIconImage(imglogo.getImage());
 		setTitle("AutoTotaalDiensten - Hoofdmenu"); 
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 

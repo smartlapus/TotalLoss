@@ -62,6 +62,7 @@ public class LogIn extends JFrame implements ActionListener, KeyListener {
 		
 		setIconImage(imglogo.getImage());
 		setTitle("AutoTotaalDiensten - Inloggen"); 
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
