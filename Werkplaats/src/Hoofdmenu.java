@@ -11,14 +11,14 @@ import javax.swing.JSeparator;
 
 
 public class Hoofdmenu extends JFrame implements ActionListener{
-	private JMenu menuKlant, menuAgenda, menuMedewerker, menuGarage, menuKlus, menuBeheer;
-	private JMenuBar menuBar;
-	private JMenuItem menuItemAgenda1;
-	private JMenuItem menuItemKlus1, menuItemKlus2;
-	private JMenuItem menuItemKlant1, menuItemKlant2, menuItemKlant3;
-	private JMenuItem menuItemMedewerker1, menuItemMedewerker2, menuItemMedewerker3;
-	private JMenuItem menuItemParkeergarage1;
-	private JMenuItem menuItemBeheer1, menuItemBeheer2;
+	protected JMenu menuKlant, menuAgenda, menuMedewerker, menuGarage, menuKlus, menuBeheer;
+	protected JMenuBar menuBar;
+	protected JMenuItem menuItemAgenda1;
+	protected JMenuItem menuItemKlus1, menuItemKlus2;
+	protected JMenuItem menuItemKlant1, menuItemKlant2, menuItemKlant3;
+	protected JMenuItem menuItemMedewerker1, menuItemMedewerker2, menuItemMedewerker3;
+	protected JMenuItem menuItemParkeergarage1;
+	protected JMenuItem menuItemBeheer1, menuItemBeheer2;
 	protected Bedrijf hetBedrijf;
 	
 	public Hoofdmenu(Bedrijf b){
