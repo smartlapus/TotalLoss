@@ -115,6 +115,8 @@ public class MedewerkerToevoegenFrame extends Hoofdmenu implements ActionListene
 			nwm = new Monteur(vnm, anm, pcode, huisnr, plts, mail, telnr, bsn, reknr);
 			hetBedrijf.voegMonteurToe(nwm);
 			JOptionPane.showMessageDialog(null, "Klant is succesvol toegevoegd");
+			MedewerkerOverzichtFrame medewerkeroverzicht = new MedewerkerOverzichtFrame(hetBedrijf);
+			this.dispose();
 		}
 		
 		

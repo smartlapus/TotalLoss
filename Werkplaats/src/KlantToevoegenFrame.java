@@ -102,6 +102,8 @@ public class KlantToevoegenFrame extends Hoofdmenu implements ActionListener{
 			nwk = new Klant(vnm, anm, pcode, huisnr, plts, mail, telnr);
 			hetBedrijf.voegKlantToe(nwk);
 			JOptionPane.showMessageDialog(null, "Klant is succesvol toegevoegd");
+			KlantOverzichtFrame klantoverzicht = new KlantOverzichtFrame(hetBedrijf);
+			this.dispose();
 		}
 		
 		//Menu actionlisteners

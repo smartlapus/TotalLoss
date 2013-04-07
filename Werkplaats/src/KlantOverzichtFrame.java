@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
@@ -16,6 +17,7 @@ public class KlantOverzichtFrame extends Hoofdmenu implements ActionListener{
 	private JComboBox dropDownKlanten;
 	private JTextField tfVoor, tfAchter, tfEmail, tfPostcode, tfPlaats, tfHuisnummer, tfTelnummer;
 	private JPanel contactPanel;
+	private JButton pasAan, slaOp;
 	
 	public KlantOverzichtFrame(Bedrijf b){
 		super(b);
@@ -28,7 +30,7 @@ public class KlantOverzichtFrame extends Hoofdmenu implements ActionListener{
 		
 		 contactPanel = new JPanel();
 		 contactPanel.setBorder(new TitledBorder( "Gegevens van de klant" )); 
-		 contactPanel.setLayout(new GridLayout(7, 2, 5, 5));
+		 contactPanel.setLayout(new GridLayout(8, 2, 5, 5));
 		 add(contactPanel, BorderLayout.SOUTH);
 		 
 		  JLabel l1 = new JLabel("Voornaam: "); contactPanel.add(l1);
@@ -51,6 +53,9 @@ public class KlantOverzichtFrame extends Hoofdmenu implements ActionListener{
 		  
 		  JLabel l7 = new JLabel("Telefoonnummer: "); contactPanel.add(l7); 
 		  tfTelnummer = new JTextField(9); tfTelnummer.setEditable(false);   contactPanel.add(tfTelnummer); 
+		  
+		  pasAan = new JButton("Aanpassen"); contactPanel.add(pasAan); pasAan.addActionListener(this);
+		  slaOp = new JButton("Opslaan"); contactPanel.add(slaOp); slaOp.setVisible(false); slaOp.addActionListener(this);
 		
 		  onSelectedItemChanged();
 	}
@@ -76,11 +81,41 @@ public class KlantOverzichtFrame extends Hoofdmenu implements ActionListener{
 			tfPlaats.setText("");
 			tfTelnummer.setText("");
 			}
-		}
+	}
+		
+		
 	public void actionPerformed(ActionEvent click) {  
 		  if (click.getSource() == dropDownKlanten){
 			  onSelectedItemChanged();
 		  } 
+		  
+		  if (click.getSource() == pasAan){
+				tfVoor.setEditable(true);
+				tfAchter.setEditable(true);
+				tfEmail.setEditable(true);
+				tfPostcode.setEditable(true);
+				tfHuisnummer.setEditable(true);
+				tfPlaats.setEditable(true);
+				tfTelnummer.setEditable(true);
+				pasAan.setVisible(false);
+				slaOp.setVisible(true);
+			}
+		  if (click.getSource() == slaOp){
+			  Object obj = dropDownKlanten.getSelectedItem();
+				if (obj instanceof Klant){
+					Klant k = (Klant)obj;
+					k.setVoornaam(tfVoor.getText());
+					k.setAchternaam(tfAchter.getText());
+					k.setEmail(tfEmail.getText());
+					k.setPostcode(tfPostcode.getText());
+					k.setHuisnr(tfHuisnummer.getText());
+					k.setPlaats(tfPlaats.getText());
+					k.setTelnummer(tfTelnummer.getText());
+					JOptionPane.showMessageDialog(null, "Klant is succesvol aangepast");
+					KlantOverzichtFrame klantoverzicht = new KlantOverzichtFrame(hetBedrijf);
+					this.dispose();
+					}
+		  }
 		  
 		  if(click.getSource() == menuItemAgenda1){
 				AgendaFrame agenda = new AgendaFrame(hetBedrijf);
