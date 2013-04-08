@@ -56,6 +56,16 @@ public class BezettingOpvragenFrame extends Hoofdmenu implements ActionListener 
 	}
 	
 	public void ActionPerformed(ActionEvent click){
+		
+		if(click.getSource() == Opvragen)
+		{
+			Agenda nwa = null; 
+			String dg = boxDag.getSelectedItem().toString();
+			String md = boxMaand.getSelectedItem().toString();
+			String jr = boxJaar.getSelectedItem().toString();
+			nwa = new Agenda(dg, md, jr);
+			hetBedrijf.vraagBezettingOp(); //Methode uit Bedrijf, dag maand en jaar opvragen
+		}
 		if(click.getSource() == menuItemAgenda1){
 			AgendaFrame agenda = new AgendaFrame(hetBedrijf);
 			this.dispose();

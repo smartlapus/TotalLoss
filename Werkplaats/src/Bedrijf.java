@@ -82,4 +82,8 @@ public class Bedrijf {
 	{
 		// Agenda dag + maand + jaar equals dag + maand + jaar van klus.
 	}
+	public void vraagBezettingOp()
+	{
+		//Bezetting dag + maand + jaar worden opgevraagd.
+	}
 }
