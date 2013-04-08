@@ -17,7 +17,7 @@ public class MedewerkerOverzichtFrame extends Hoofdmenu implements ActionListene
 	private JComboBox dropDownMedewerkers;
 	private JTextField tfVoor, tfAchter, tfEmail, tfPostcode, tfPlaats, tfHuisnummer, tfTelnummer, tfBSN, tfReknummer;
 	private JPanel contactPanel;
-	private JButton pasAan, slaOp;
+	private JButton pasAan, slaOp, verwijder;
 	
 	public MedewerkerOverzichtFrame(Bedrijf b){
 		super(b);
@@ -62,7 +62,8 @@ public class MedewerkerOverzichtFrame extends Hoofdmenu implements ActionListene
 		  tfReknummer = new JTextField(9); tfReknummer.setEditable(false);   contactPanel.add(tfReknummer);
 		  
 		  pasAan = new JButton("Aanpassen"); contactPanel.add(pasAan); pasAan.addActionListener(this);
-		  slaOp = new JButton("Opslaan"); contactPanel.add(slaOp); slaOp.setVisible(false); slaOp.addActionListener(this);
+		  verwijder = new JButton("Verwijderen"); contactPanel.add(verwijder); verwijder.addActionListener(this);
+		  slaOp = new JButton("Opslaan"); slaOp.addActionListener(this);
 		
 		  onSelectedItemChanged();
 	}
@@ -109,8 +110,21 @@ public class MedewerkerOverzichtFrame extends Hoofdmenu implements ActionListene
 				tfBSN.setEditable(true);
 				tfReknummer.setEditable(true);
 				pasAan.setVisible(false);
-				slaOp.setVisible(true);
+				contactPanel.remove(pasAan);
+				contactPanel.add(slaOp);
 			}
+		  
+		  if(click.getSource() == verwijder){
+			  Object obj = dropDownMedewerkers.getSelectedItem();
+				if (obj instanceof Monteur){
+					Monteur m = (Monteur)obj;
+					hetBedrijf.verwijderMonteur(m);
+					JOptionPane.showMessageDialog(null, "Medewerker is succesvol verwijderd");
+					MedewerkerOverzichtFrame medewerkeroverzicht = new MedewerkerOverzichtFrame(hetBedrijf);
+					this.dispose();
+				}
+		  }
+		  
 		  if (click.getSource() == slaOp){
 			  Object obj = dropDownMedewerkers.getSelectedItem();
 				if (obj instanceof Monteur){

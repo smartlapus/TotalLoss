@@ -51,19 +51,33 @@ public class Bedrijf {
 	}
 
 	public void voegKlantToe(Klant klant){
-		if(!alleKlanten.contains(klant))
-		{
+		if(!alleKlanten.contains(klant)){
 			alleKlanten.add(klant);
 			System.out.println("Klant is toegevoegd");
 			System.out.println(alleKlanten);
 		}
 	}
 	
+	public void verwijderKlant(Klant klant){
+		if(alleKlanten.contains(klant)){
+			alleKlanten.remove(klant);
+			System.out.println("Klant is verwijderd");
+			System.out.println(alleKlanten);
+		}
+	}
+	
 	public void voegMonteurToe(Monteur medewerker){
-		if(!alleMonteurs.contains(medewerker))
-		{
+		if(!alleMonteurs.contains(medewerker)){
 			alleMonteurs.add(medewerker);
 			System.out.println("Monteur is toegevoegd");
+			System.out.println(alleMonteurs);
+		}
+	}
+	
+	public void verwijderMonteur(Monteur monteur){
+		if(alleMonteurs.contains(monteur)){
+			alleMonteurs.remove(monteur);
+			System.out.println("Monteur is verwijderd");
 			System.out.println(alleMonteurs);
 		}
 	}
