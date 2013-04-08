@@ -52,8 +52,8 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 		menuItemAgenda1 = new JMenuItem("Dagplanning"); menuAgenda.add(menuItemAgenda1);
 		
 		//Menu Items voor Klanten
-		menuItemKlant1 = new JMenuItem("Klant Toevoegen"); menuKlant.add(menuItemKlant1);
-		menuItemKlant2 = new JMenuItem("Overzicht"); menuKlant.add(menuItemKlant2);
+		menuItemKlant1 = new JMenuItem("Overzicht"); menuKlant.add(menuItemKlant1);
+		menuItemKlant2 = new JMenuItem("Klant Toevoegen"); menuKlant.add(menuItemKlant2);
 		
 		// Menu Items voor Klus
 		menuItemKlus1 = new JMenuItem("Klus toevoegen"); menuKlus.add(menuItemKlus1);
