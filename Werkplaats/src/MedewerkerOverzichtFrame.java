@@ -67,7 +67,8 @@ public class MedewerkerOverzichtFrame extends Hoofdmenu implements ActionListene
 		
 		  onSelectedItemChanged();
 	}
-	private void onSelectedItemChanged(){
+	private void onSelectedItemChanged()
+	{
 		Object obj = dropDownMedewerkers.getSelectedItem();
 		if (obj instanceof Monteur){
 			Monteur m = (Monteur)obj;
@@ -80,7 +81,7 @@ public class MedewerkerOverzichtFrame extends Hoofdmenu implements ActionListene
 			tfTelnummer.setText(m.getTelnummer());
 			tfBSN.setText(m.getBsnnr());
 			tfReknummer.setText(m.getReknummer());
-			}
+		}
 		
 		else{
 			tfVoor.setText("");

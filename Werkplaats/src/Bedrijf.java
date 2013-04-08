@@ -90,7 +90,13 @@ public class Bedrijf {
 			System.out.println(alleMonteurs);
 		}
 	}
-	
+	public void verwijderKlus(Klus klus){
+		if(alleKlussen.contains(klus)){
+			alleKlussen.remove(klus);
+			System.out.println("Klus is verwijderd");
+			System.out.println(alleKlussen);
+		}
+	}
 	public void voegFinancienToe(Financien fin){
 		if(!alleFinancien.contains(fin))
 		{
