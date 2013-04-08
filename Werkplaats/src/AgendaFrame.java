@@ -103,6 +103,10 @@ public class AgendaFrame extends Hoofdmenu implements ActionListener{
 			FinancieelOverzichtFrame financieeloverzicht = new FinancieelOverzichtFrame(hetBedrijf);
 			this.dispose();
 		}
+		if(click.getSource() == menuItemBeheer1){
+			FinancieelOverzichtFrame financieeloverzicht = new FinancieelOverzichtFrame(hetBedrijf);
+			this.dispose();
+		}
 	}
 
 }
