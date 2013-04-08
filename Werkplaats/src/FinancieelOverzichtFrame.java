@@ -1,14 +1,17 @@
 import java.awt.*; 
 import java.awt.event.*; 
-import javax.swing.*; 
-
 import javax.swing.JComboBox;
-import javax.swing.border.TitledBorder;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class FinancieelOverzichtFrame extends Hoofdmenu implements ActionListener {
 	
 	private JComboBox dropDownKwartaal;
-	private JPanel p;
+	private JTable tabel;
+	private JScrollPane scrollPane;
+	private DefaultTableModel model = new DefaultTableModel(new Object[][] {
+	{ "", "", "" } }, new Object[] { "Af/bij", "Bedrag", "Datum" });
 	String[] kwartaalKeuze = { "Selecteer een kwartaal", "Eerste kwartaal", "Tweede kwartaal", "Derde kwartaal", "Vierde kwartaal" };
 
 	public FinancieelOverzichtFrame(Bedrijf b)
@@ -16,40 +19,38 @@ public class FinancieelOverzichtFrame extends Hoofdmenu implements ActionListene
 		super(b);
 		setTitle("AutoTotaalDiensten - Financieel Overzicht");	
 		setLayout(new BorderLayout());
-		
-		p = new JPanel(); add(p, BorderLayout.CENTER); 
-		p.setPreferredSize(new Dimension(250, 100)); 
-		p.setBackground(Color.WHITE);
-		
+
 		dropDownKwartaal = new JComboBox(kwartaalKeuze);
 		add(dropDownKwartaal, BorderLayout.NORTH);
 		dropDownKwartaal.addActionListener(this);
+		
+		tabel = new JTable(model); 
+		add(new JScrollPane(tabel), BorderLayout.CENTER);
 	}
 
 	public void actionPerformed(ActionEvent click) {
-		Graphics g = p.getGraphics();
 		if(dropDownKwartaal.getSelectedItem() == "Eerste kwartaal") {
 			for (Financien f : hetBedrijf.alleFinancien) { 
 				if (f.getKwartaal() == 1) { 
-					System.out.println(f);
+					model.addRow(new Object[]{f.getSoort(), f.getBedrag(), f.getDatum()});
 				} 
 			}
 		}else if(dropDownKwartaal.getSelectedItem() == "Tweede kwartaal") {
 			for (Financien f : hetBedrijf.alleFinancien) { 
 				if (f.getKwartaal() == 2) { 
-					System.out.println(f);
+					model.addRow(new Object[]{f.getSoort(), f.getBedrag(), f.getDatum()});
 				}
 			}
 		}else if(dropDownKwartaal.getSelectedItem() == "Derde kwartaal") {
 			for (Financien f : hetBedrijf.alleFinancien) { 
 				if (f.getKwartaal() == 3) { 
-					System.out.println(f);
+					model.addRow(new Object[]{f.getSoort(), f.getBedrag(), f.getDatum()});
 				} 
 			}
 		}else if(dropDownKwartaal.getSelectedItem() == "Vierde kwartaal") {
 			for (Financien f : hetBedrijf.alleFinancien) { 
 				if (f.getKwartaal() == 4) {
-					System.out.println(f);
+					model.addRow(new Object[]{f.getSoort(), f.getBedrag(), f.getDatum()});
 				} 
 			}
 		}
