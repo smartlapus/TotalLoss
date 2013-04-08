@@ -4,9 +4,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
 
@@ -34,6 +36,7 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 		ImageIcon imgklus = new ImageIcon("klus-icon.png");
 		ImageIcon imgbeheer = new ImageIcon("beheer-icon.png");
 		
+
 		menuBar = new JMenuBar();
 		menuAgenda = new JMenu("Agenda"); menuBar.add(menuAgenda);
 		menuKlant = new JMenu("Klanten"); menuBar.add(menuKlant);

@@ -46,7 +46,6 @@ public class LogIn extends JFrame implements ActionListener, KeyListener {
 		ImageIcon imglogo = new ImageIcon("atd.png");
 		JLabel imageLabel = new JLabel(imglogo); add(imageLabel);
 		
-		
 		inputPanel = new JPanel();
 		
 		inputPanel.setAlignmentX(CENTER_ALIGNMENT);
@@ -74,7 +73,7 @@ public class LogIn extends JFrame implements ActionListener, KeyListener {
 		String a = String.copyValueOf(p);
 		if(click.getSource() == logInButton && s.equals("") && a.equals(""))
 		{
-			Hoofdmenu ingelogd = new Hoofdmenu(hetBedrijf);
+			WelkomFrame welkom = new WelkomFrame(hetBedrijf);
 			this.dispose();
 		} 
 		
@@ -94,6 +93,7 @@ public class LogIn extends JFrame implements ActionListener, KeyListener {
 		if(type.getKeyCode() == KeyEvent.VK_ENTER && s.equals("admin") && a.equals("admin")){
 			Hoofdmenu ingelogd = new Hoofdmenu(hetBedrijf);
 			this.dispose();
+
 		}
 		
 		if(type.getKeyCode() == KeyEvent.VK_ENTER && !s.equals("admin") && !a.equals("admin")){
