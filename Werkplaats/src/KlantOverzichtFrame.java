@@ -126,8 +126,20 @@ public class KlantOverzichtFrame extends Hoofdmenu implements ActionListener{
 			  Object obj = dropDownKlanten.getSelectedItem();
 				if (obj instanceof Klant){
 					Klant k = (Klant)obj;
-					hetBedrijf.verwijderKlant(k);
-					JOptionPane.showMessageDialog(null, "Klant is succesvol verwijderd");
+										
+					int option = JOptionPane.showConfirmDialog(null, "Weet u zeker dat u de klant '" + k  + "' wilt verwijderen?", "Bevestiging",JOptionPane.YES_NO_OPTION);
+					
+					if(option == JOptionPane.YES_OPTION){
+						hetBedrijf.verwijderKlant(k);
+						JOptionPane.showMessageDialog(null, "Klant '" + k + "' is verwijderd.");
+						
+					}
+					else{
+						return;
+					}
+					
+					
+				
 					KlantOverzichtFrame klantoverzicht = new KlantOverzichtFrame(hetBedrijf);
 					this.dispose();
 				}

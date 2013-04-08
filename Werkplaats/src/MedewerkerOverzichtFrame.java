@@ -119,12 +119,27 @@ public class MedewerkerOverzichtFrame extends Hoofdmenu implements ActionListene
 			  Object obj = dropDownMedewerkers.getSelectedItem();
 				if (obj instanceof Monteur){
 					Monteur m = (Monteur)obj;
+					
+				int option = JOptionPane.showConfirmDialog(null, "Weet u zeker dat u de medewerker '" + m  + "' wilt verwijderen?", "Bevestiging",JOptionPane.YES_NO_OPTION);
+						
+				if(option == JOptionPane.YES_OPTION){
 					hetBedrijf.verwijderMonteur(m);
-					JOptionPane.showMessageDialog(null, "Medewerker is succesvol verwijderd");
-					MedewerkerOverzichtFrame medewerkeroverzicht = new MedewerkerOverzichtFrame(hetBedrijf);
+					JOptionPane.showMessageDialog(null, "Medewerker '" + m + "' is verwijderd.");
+					
+				}
+				else{
+					return;
+				}
+				
+			
+				
+				MedewerkerOverzichtFrame medewerkeroverzicht = new MedewerkerOverzichtFrame(hetBedrijf);
 					this.dispose();
 				}
 		  }
+		  
+		  
+		  
 		  
 		  if (click.getSource() == slaOp){
 			  Object obj = dropDownMedewerkers.getSelectedItem();
