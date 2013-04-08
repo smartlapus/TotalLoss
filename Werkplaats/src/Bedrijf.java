@@ -90,6 +90,7 @@ public class Bedrijf {
 			System.out.println(alleMonteurs);
 		}
 	}
+	
 	public void verwijderKlus(Klus klus){
 		if(alleKlussen.contains(klus)){
 			alleKlussen.remove(klus);
@@ -97,6 +98,7 @@ public class Bedrijf {
 			System.out.println(alleKlussen);
 		}
 	}
+	
 	public void voegFinancienToe(Financien fin){
 		if(!alleFinancien.contains(fin))
 		{
@@ -104,9 +106,6 @@ public class Bedrijf {
 		}
 	}
 	
-	public void voegAfspraakToe(){
-		
-	}
 	public void vraagAgendaOp()
 	{
 		// Agenda dag + maand + jaar equals dag + maand + jaar van klus.

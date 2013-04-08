@@ -21,7 +21,15 @@ public class Agenda {
 	{
 		return jaar;
 	}
-	public void voegKlusToe(){
-		
+	
+	public String getDatum()
+	{
+		return dag + maand + jaar;
+	}
+	
+	public String toString()
+	{
+		String s = "Datum:" + dag + maand + jaar;
+		return s;
 	}
 }

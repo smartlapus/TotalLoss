@@ -21,7 +21,7 @@ public class AgendaFrame extends Hoofdmenu implements ActionListener{
 	private JComboBox boxDag = new JComboBox(dag);
 	private JComboBox boxMaand = new JComboBox(maand);
 	private JComboBox boxJaar = new JComboBox(jaar);
-	private JButton Opvragen;
+	private JButton opvragen;
 	JLabel lDag, lMaand, lJaar;
 	
 	public AgendaFrame(Bedrijf b){
@@ -49,27 +49,38 @@ public class AgendaFrame extends Hoofdmenu implements ActionListener{
 		
 		cp.add(boxDag);cp.add(boxMaand);cp.add(boxJaar);
 		
-		JButton Opvragen = new JButton("Opvragen");
+		opvragen = new JButton("Opvragen");
+		opvragen.addActionListener(this);
+		
 		c.weightx = 0.0;
 		c.gridwidth = 0;
 		c.gridx = 0;
 		c.gridy = 4;
-		cp.add(Opvragen, c);
+		cp.add(opvragen, c);
 	}
 	
-	public void ActionPerformed(ActionEvent click){
+	public void actionPerformed(ActionEvent click){
 		if(click.getSource() == menuItemAgenda1){
 			AgendaFrame agenda = new AgendaFrame(hetBedrijf);
 			this.dispose();
 		} 
-		if(click.getSource() == Opvragen)
+		if(click.getSource() == opvragen)
 		{
-			Agenda nwa = null; 
 			String dg = boxDag.getSelectedItem().toString();
 			String md = boxMaand.getSelectedItem().toString();
 			String jr = boxJaar.getSelectedItem().toString();
-			nwa = new Agenda(dg, md, jr);
-			hetBedrijf.vraagAgendaOp(); //Methode uit Bedrijf, dag maand en jaar uit klus opvragen.
+			
+			String select  = dg + "-" + md + "-" + jr;
+			String select2 = dg + "/" + md + "/" + jr;
+			
+			for (Klus k : hetBedrijf.alleKlussen) {
+				if(select.equals(k.getDatum()) || select2.equals(k.getDatum()))
+				{
+					System.out.println("Klussen op deze datum:");
+					System.out.println("- " + k);
+				}
+			}
+
 		}
 		if(click.getSource() == menuItemKlus1){
 			KlusToevoegenFrame klustoevoegen = new KlusToevoegenFrame(hetBedrijf);
