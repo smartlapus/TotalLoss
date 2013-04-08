@@ -4,7 +4,7 @@ public class Klus {
 	private String werkzaamheden;
 	private String kenteken;
 	private String datum;
-	private Monteur monteur;
+	protected Monteur monteur;
 	
 	public Klus (String nm, String werk, String kent, String dat){
 		naam = nm;

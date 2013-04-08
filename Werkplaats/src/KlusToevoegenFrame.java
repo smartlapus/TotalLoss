@@ -64,15 +64,15 @@ public class KlusToevoegenFrame extends Hoofdmenu implements ActionListener{
 			String vnm = tfNaam.getText();  
 			String werk = tfWerkzaamheden.getText(); 
 			String kent = tfKenteken.getText(); 
-			String dat = tfDatum.getText(); 
+			String dat = tfDatum.getText();
 			nwk = new Klus(vnm, werk, kent, dat);
 			hetBedrijf.voegKlusToe(nwk);
 			nwk.setMonteur(m);
-			
 			JOptionPane.showMessageDialog(null, "Klus is succesvol toegevoegd");
 			KlusOverzichtFrame klusoverzicht = new KlusOverzichtFrame(hetBedrijf);
 			this.dispose();
 			}
+			
 		}
 		if(click.getSource() == menuItemAgenda1){
 			AgendaFrame agenda = new AgendaFrame(hetBedrijf);
