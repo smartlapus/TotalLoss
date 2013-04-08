@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 
@@ -60,28 +61,46 @@ public class AgendaFrame extends Hoofdmenu implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent click){
-		if(click.getSource() == menuItemAgenda1){
-			AgendaFrame agenda = new AgendaFrame(hetBedrijf);
-			this.dispose();
-		} 
 		if(click.getSource() == opvragen)
 		{
 			String dg = boxDag.getSelectedItem().toString();
 			String md = boxMaand.getSelectedItem().toString();
 			String jr = boxJaar.getSelectedItem().toString();
 			
+			String dgLang = "0" + boxDag.getSelectedItem().toString();
+			String mdLang = "0" + boxMaand.getSelectedItem().toString();
+			String jrKort = boxJaar.getSelectedItem().toString(); 
+			jrKort = jrKort.replace("20", "");
+			
 			String select  = dg + "-" + md + "-" + jr;
 			String select2 = dg + "/" + md + "/" + jr;
+			String select3  = dg + "-" + md + "-" + jrKort;
+			String select4 = dg + "/" + md + "/" + jrKort;
+			String select5 = dgLang + "-" + mdLang + "-" + jrKort;
+			String select6 = dgLang + "/" + mdLang + "/" + jrKort;
+			String select7 = dgLang + "-" + mdLang + "-" + jr;
+			String select8 = dgLang + "/" + mdLang + "/" + jr;
 			
 			for (Klus k : hetBedrijf.alleKlussen) {
-				if(select.equals(k.getDatum()) || select2.equals(k.getDatum()))
+				if(select.equals(k.getDatum()) || select2.equals(k.getDatum()) || select3.equals(k.getDatum())
+						|| select4.equals(k.getDatum()) || select5.equals(k.getDatum()) 
+						|| select6.equals(k.getDatum()) || select7.equals(k.getDatum())
+						|| select8.equals(k.getDatum()))
 				{
 					System.out.println("Klussen op deze datum:");
 					System.out.println("- " + k);
 				}
+				else if(!select.equals(k.getDatum()) || !select2.equals(k.getDatum()))
+				{
+					JOptionPane.showMessageDialog(null, "Er zijn geen klussen op deze datum");
+				}
 			}
 
 		}
+		if(click.getSource() == menuItemAgenda1){
+			AgendaFrame agenda = new AgendaFrame(hetBedrijf);
+			this.dispose();
+		} 
 		if(click.getSource() == menuItemKlus1){
 			KlusToevoegenFrame klustoevoegen = new KlusToevoegenFrame(hetBedrijf);
 			this.dispose();
