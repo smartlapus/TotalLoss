@@ -16,6 +16,7 @@ public class Bedrijf {
 		alleKlanten = new ArrayList<Klant>();
 		alleMonteurs = new ArrayList<Monteur>();
 		alleFinancien = new ArrayList<Financien>();
+		alleKlussen = new ArrayList<Klus>();
 	}
 	
 	public ArrayList<Klant> getAlleKlanten() {
@@ -65,6 +66,14 @@ public class Bedrijf {
 			alleMonteurs.add(medewerker);
 			System.out.println("Monteur is toegevoegd");
 			System.out.println(alleMonteurs);
+		}
+	}
+	public void voegKlusToe(Klus klus){
+		if(!alleKlussen.contains(klus))
+		{
+			alleKlussen.add(klus);
+			System.out.println("Klus is toegevoegd");
+			System.out.println(alleKlussen);
 		}
 	}
 	

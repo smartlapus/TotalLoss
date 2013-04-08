@@ -16,7 +16,7 @@ public class KlusToevoegenFrame extends Hoofdmenu implements ActionListener{
 		
 		JLabel l;
 	    JTextField t;
-	    //JButton b;
+	   // JButton b1, b2;
 	    Container cp = getContentPane();
 	    cp.setLayout(new GridBagLayout());
 	    cp.setBackground(UIManager.getColor("control"));
@@ -37,32 +37,55 @@ public class KlusToevoegenFrame extends Hoofdmenu implements ActionListener{
 	    l.setDisplayedMnemonic('k');
 	    cp.add(l = new JLabel("Datum:", SwingConstants.RIGHT), c);
 	    l.setDisplayedMnemonic('s');
-	    //cp.add(b = new JButton("Clear"), c);
-	    //b.setMnemonic('1');
+	    cp.add(cancelbutton = new JButton("Clear"), c);
+	    cancelbutton.setMnemonic('C');
 	    c.gridx = 1;
 	    c.gridy = 0;
 	    c.weightx = 1.0;
 	    c.fill = GridBagConstraints.HORIZONTAL;
 	    c.anchor = GridBagConstraints.CENTER;
 
-	    cp.add(t = new JTextField(35), c);
-	    t.setFocusAccelerator('n');
+	    cp.add(naamInvoer = new JTextField(35), c);
+	    naamInvoer.setFocusAccelerator('n');
 	    c.gridx = 1;
 	    c.gridy = GridBagConstraints.RELATIVE;
 	   
-	    cp.add(t = new JTextField(35), c);
-	    t.setFocusAccelerator('h');
-	    cp.add(t = new JTextField(35), c);
-	    t.setFocusAccelerator('c');
-	    cp.add(t = new JTextField(35), c);
-	    t.setFocusAccelerator('s');
+	    cp.add(werkzaamhedenInvoer = new JTextField(35), c);
+	    werkzaamhedenInvoer.setFocusAccelerator('h');
+	    cp.add(kentekenInvoer = new JTextField(35), c);
+	    kentekenInvoer.setFocusAccelerator('c');
+	    cp.add(datumInvoer = new JTextField(35), c);
+	    datumInvoer.setFocusAccelerator('s');
 	    c.weightx = 0.0;
 	    c.fill = GridBagConstraints.NONE;
-	    //cp.add(b = new JButton("OK"), c);
-	   //b.setMnemonic('o');
+	    cp.add(savebutton = new JButton("OK"), c);
+	    savebutton.setMnemonic('o');
+	    
+	    cancelbutton.addActionListener(this);
+	    savebutton.addActionListener(this);
 	}
 	
 	public void ActionPerformed(ActionEvent click){
+		if(click.getSource() == cancelbutton){
+			naamInvoer.setText("");
+			werkzaamhedenInvoer.setText("");
+			kentekenInvoer.setText("");
+			datumInvoer.setText("");
+			JOptionPane.showMessageDialog(null, "Toevoegen is geannuleerd");
+		}
+		if(click.getSource() == savebutton){
+			Klus nwk = null; 
+			String vnm = naamInvoer.getText();  
+			String werk = werkzaamhedenInvoer.getText(); 
+			String kent = kentekenInvoer.getText(); 
+			String dat = datumInvoer.getText(); 
+			nwk = new Klus(vnm, werk, kent, dat);
+			hetBedrijf.voegKlusToe(nwk);
+			
+			JOptionPane.showMessageDialog(null, "Klus is succesvol toegevoegd");
+			KlusOverzichtFrame klusoverzicht = new KlusOverzichtFrame(hetBedrijf);
+			this.dispose();
+		}
 		if(click.getSource() == menuItemAgenda1){
 			AgendaFrame agenda = new AgendaFrame(hetBedrijf);
 			this.dispose();
