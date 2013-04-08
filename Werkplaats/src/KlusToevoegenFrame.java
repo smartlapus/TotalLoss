@@ -43,9 +43,6 @@ public class KlusToevoegenFrame extends Hoofdmenu implements ActionListener{
 		  
 		  savebutton = new JButton("Opslaan"); contactPanel.add(savebutton); savebutton.addActionListener(this);
 		  cancelbutton = new JButton("Annuleren"); contactPanel.add(cancelbutton); cancelbutton.addActionListener(this);
-	    
-	    cancelbutton.addActionListener(this);
-	    savebutton.addActionListener(this);
 	}
 	
 	public void actionPerformed(ActionEvent click){
