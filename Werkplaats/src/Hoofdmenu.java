@@ -19,8 +19,7 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 	protected JMenuItem menuItemKlus1, menuItemKlus2;
 	protected JMenuItem menuItemKlant1, menuItemKlant2;
 	protected JMenuItem menuItemMedewerker1, menuItemMedewerker2;
-	protected JMenuItem menuItemParkeergarage1;
-	protected JMenuItem menuItemBeheer1, menuItemBeheer2, menuItemBeheer3;
+	protected JMenuItem menuItemBeheer1;
 	protected Bedrijf hetBedrijf;
 	
 	public Hoofdmenu(Bedrijf b){
@@ -32,7 +31,6 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 		ImageIcon imgklant = new ImageIcon("people-icon.png");
 		ImageIcon imgagenda = new ImageIcon("icon-schedule-lg.png");
 		ImageIcon imgmedewerker = new ImageIcon("ppl_icon.png");
-		ImageIcon imggarage = new ImageIcon("garage-icon.png");
 		ImageIcon imgklus = new ImageIcon("klus-icon.png");
 		ImageIcon imgbeheer = new ImageIcon("beheer-icon.png");
 		
@@ -42,10 +40,8 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 		menuKlant = new JMenu("Klanten"); menuBar.add(menuKlant);
 		menuKlus = new JMenu("Klus"); menuBar.add(menuKlus);
 		menuMedewerker = new JMenu("Medewerkers"); menuBar.add(menuMedewerker);
-		menuGarage = new JMenu("Parkeergarage"); menuBar.add(menuGarage);
 		menuBeheer = new JMenu("Beheer"); menuBar.add(menuBeheer);
 		
-		menuGarage.setIcon(imggarage);
 		menuKlant.setIcon(imgklant);
 		menuKlus.setIcon(imgklus);
 		menuAgenda.setIcon(imgagenda);
@@ -56,8 +52,8 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 		menuItemAgenda1 = new JMenuItem("Dagplanning"); menuAgenda.add(menuItemAgenda1);
 		
 		//Menu Items voor Klanten
-		menuItemKlant1 = new JMenuItem("Overzicht"); menuKlant.add(menuItemKlant1);
-		menuItemKlant2 = new JMenuItem("Klant Toevoegen"); menuKlant.add(menuItemKlant2);
+		menuItemKlant1 = new JMenuItem("Klant Toevoegen"); menuKlant.add(menuItemKlant1);
+		menuItemKlant2 = new JMenuItem("Overzicht"); menuKlant.add(menuItemKlant2);
 		
 		// Menu Items voor Klus
 		menuItemKlus1 = new JMenuItem("Klus toevoegen"); menuKlus.add(menuItemKlus1);
@@ -67,13 +63,8 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 		menuItemMedewerker1 = new JMenuItem("Overzicht"); menuMedewerker.add(menuItemMedewerker1);
 		menuItemMedewerker2 = new JMenuItem("Medewerker Toevoegen"); menuMedewerker.add(menuItemMedewerker2);
 		
-		//Menu Items voor Parkeergarage
-		menuItemParkeergarage1 = new JMenuItem("Bezetting opvragen"); menuGarage.add(menuItemParkeergarage1);
-		
 		//Menu Items voor Beheer
 		menuItemBeheer1 = new JMenuItem("Financieel overzicht"); menuBeheer.add(menuItemBeheer1);
-		menuItemBeheer2 = new JMenuItem("Voorraad overzicht"); menuBeheer.add(menuItemBeheer2);
-		menuItemBeheer3 = new JMenuItem("Lopende Rekeningen"); menuBeheer.add(menuItemBeheer3);
 		
 		//ActionListeners voor de Menu Items
 		menuItemAgenda1.addActionListener(this);
@@ -83,11 +74,8 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 		menuItemMedewerker2.addActionListener(this);
 		menuItemKlus1.addActionListener(this);
 		menuItemKlus2.addActionListener(this);
-		menuItemParkeergarage1.addActionListener(this);
 		menuItemBeheer1.addActionListener(this);
-		menuItemBeheer2.addActionListener(this);
-		menuItemBeheer3.addActionListener(this);
-		
+
 		setJMenuBar(menuBar);
 		setIconImage(imglogo.getImage());
 		setTitle("AutoTotaalDiensten - Hoofdmenu"); 
@@ -128,24 +116,6 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 		
 		if(click.getSource() == menuItemMedewerker2){
 			MedewerkerToevoegenFrame Medewerkertoevoegen = new MedewerkerToevoegenFrame(hetBedrijf);
-			this.dispose();
-		}
-		
-		if(click.getSource() == menuItemParkeergarage1){
-			BezettingOpvragenFrame bezettingopvragen = new BezettingOpvragenFrame(hetBedrijf);
-			this.dispose();
-		}
-		if(click.getSource() == menuItemBeheer1){
-			FinancieelOverzichtFrame financieeloverzicht = new FinancieelOverzichtFrame(hetBedrijf);
-			this.dispose();
-		}
-		if(click.getSource() == menuItemBeheer2){
-			VoorraadOverzichtFrame voorraadoverzicht = new VoorraadOverzichtFrame(hetBedrijf);
-			this.dispose();
-		}
-		
-		if(click.getSource() == menuItemBeheer3){
-			LopendeRekeningenFrame lopenderekeningen = new LopendeRekeningenFrame(hetBedrijf);
 			this.dispose();
 		}
 		

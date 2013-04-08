@@ -49,19 +49,10 @@ public class WelkomFrame extends Hoofdmenu implements ActionListener{
 			MedewerkerToevoegenFrame Medewerkertoevoegen = new MedewerkerToevoegenFrame(hetBedrijf);
 			this.dispose();
 		}
-		
-		if(click.getSource() == menuItemParkeergarage1){
-			BezettingOpvragenFrame bezettingopvragen = new BezettingOpvragenFrame(hetBedrijf);
-			this.dispose();
-		}
 		if(click.getSource() == menuItemBeheer1){
 			FinancieelOverzichtFrame financieeloverzicht = new FinancieelOverzichtFrame(hetBedrijf);
 			this.dispose();
 		}
-		if(click.getSource() == menuItemBeheer2){
-			VoorraadOverzichtFrame voorraadoverzicht = new VoorraadOverzichtFrame(hetBedrijf);
-			this.dispose();
-			}
 	}
 
 }
