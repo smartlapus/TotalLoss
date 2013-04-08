@@ -152,11 +152,6 @@ public class KlantToevoegenFrame extends Hoofdmenu implements ActionListener{
 			this.dispose();
 		}
 		
-		if(click.getSource() == menuItemKlant3){
-			KlantVerwijderenFrame klantverwijderen = new KlantVerwijderenFrame(hetBedrijf);
-			this.dispose();
-		}
-		
 		if(click.getSource() == menuItemMedewerker1){
 			MedewerkerOverzichtFrame medewerkeroverzicht = new MedewerkerOverzichtFrame(hetBedrijf);
 			this.dispose();
@@ -167,10 +162,6 @@ public class KlantToevoegenFrame extends Hoofdmenu implements ActionListener{
 			this.dispose();
 		}
 		
-		if(click.getSource() == menuItemMedewerker3){
-			MedewerkerVerwijderenFrame Medewerkerverwijderen = new MedewerkerVerwijderenFrame(hetBedrijf);
-			this.dispose();
-		}
 		if(click.getSource() == menuItemParkeergarage1){
 			BezettingOpvragenFrame bezettingopvragen = new BezettingOpvragenFrame(hetBedrijf);
 			this.dispose();

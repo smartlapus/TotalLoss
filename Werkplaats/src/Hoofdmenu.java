@@ -17,8 +17,8 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 	protected JMenuBar menuBar;
 	protected JMenuItem menuItemAgenda1;
 	protected JMenuItem menuItemKlus1, menuItemKlus2;
-	protected JMenuItem menuItemKlant1, menuItemKlant2, menuItemKlant3;
-	protected JMenuItem menuItemMedewerker1, menuItemMedewerker2, menuItemMedewerker3;
+	protected JMenuItem menuItemKlant1, menuItemKlant2;
+	protected JMenuItem menuItemMedewerker1, menuItemMedewerker2;
 	protected JMenuItem menuItemParkeergarage1;
 	protected JMenuItem menuItemBeheer1, menuItemBeheer2, menuItemBeheer3;
 	protected Bedrijf hetBedrijf;
@@ -58,7 +58,6 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 		//Menu Items voor Klanten
 		menuItemKlant1 = new JMenuItem("Overzicht"); menuKlant.add(menuItemKlant1);
 		menuItemKlant2 = new JMenuItem("Klant Toevoegen"); menuKlant.add(menuItemKlant2);
-		menuItemKlant3 = new JMenuItem("Klant Verwijderen"); menuKlant.add(menuItemKlant3);
 		
 		// Menu Items voor Klus
 		menuItemKlus1 = new JMenuItem("Klus toevoegen"); menuKlus.add(menuItemKlus1);
@@ -67,7 +66,6 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 		//Menu Items voor Medewerkers
 		menuItemMedewerker1 = new JMenuItem("Overzicht"); menuMedewerker.add(menuItemMedewerker1);
 		menuItemMedewerker2 = new JMenuItem("Medewerker Toevoegen"); menuMedewerker.add(menuItemMedewerker2);
-		menuItemMedewerker3 = new JMenuItem("Medewerker Verwijderen"); menuMedewerker.add(menuItemMedewerker3);
 		
 		//Menu Items voor Parkeergarage
 		menuItemParkeergarage1 = new JMenuItem("Bezetting opvragen"); menuGarage.add(menuItemParkeergarage1);
@@ -81,10 +79,8 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 		menuItemAgenda1.addActionListener(this);
 		menuItemKlant1.addActionListener(this);
 		menuItemKlant2.addActionListener(this);
-		menuItemKlant3.addActionListener(this);
 		menuItemMedewerker1.addActionListener(this);
 		menuItemMedewerker2.addActionListener(this);
-		menuItemMedewerker3.addActionListener(this);
 		menuItemKlus1.addActionListener(this);
 		menuItemKlus2.addActionListener(this);
 		menuItemParkeergarage1.addActionListener(this);
@@ -125,11 +121,6 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 			this.dispose();
 		}
 		
-		if(click.getSource() == menuItemKlant3){
-			KlantVerwijderenFrame klantverwijderen = new KlantVerwijderenFrame(hetBedrijf);
-			this.dispose();
-		}
-		
 		if(click.getSource() == menuItemMedewerker1){
 			MedewerkerOverzichtFrame medewerkeroverzicht = new MedewerkerOverzichtFrame(hetBedrijf);
 			this.dispose();
@@ -140,10 +131,6 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 			this.dispose();
 		}
 		
-		if(click.getSource() == menuItemMedewerker3){
-			MedewerkerVerwijderenFrame Medewerkerverwijderen = new MedewerkerVerwijderenFrame(hetBedrijf);
-			this.dispose();
-		}
 		if(click.getSource() == menuItemParkeergarage1){
 			BezettingOpvragenFrame bezettingopvragen = new BezettingOpvragenFrame(hetBedrijf);
 			this.dispose();
