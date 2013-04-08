@@ -27,27 +27,38 @@ public class FinancieelOverzichtFrame extends Hoofdmenu implements ActionListene
 		tabel = new JTable(model); 
 		add(new JScrollPane(tabel), BorderLayout.CENTER);
 	}
+	
+	public void clearTable()
+	{
+		while (tabel.getRowCount() > 0) {
+            ((DefaultTableModel) tabel.getModel()).removeRow(0);
+        }
+	}
 
 	public void actionPerformed(ActionEvent click) {
 		if(dropDownKwartaal.getSelectedItem() == "Eerste kwartaal") {
+			clearTable();
 			for (Financien f : hetBedrijf.alleFinancien) { 
-				if (f.getKwartaal() == 1) { 
+				if (f.getKwartaal() == 1) {
 					model.addRow(new Object[]{f.getSoort(), f.getBedrag(), f.getDatum()});
 				} 
 			}
 		}else if(dropDownKwartaal.getSelectedItem() == "Tweede kwartaal") {
+			clearTable();
 			for (Financien f : hetBedrijf.alleFinancien) { 
 				if (f.getKwartaal() == 2) { 
 					model.addRow(new Object[]{f.getSoort(), f.getBedrag(), f.getDatum()});
 				}
 			}
 		}else if(dropDownKwartaal.getSelectedItem() == "Derde kwartaal") {
+			clearTable();
 			for (Financien f : hetBedrijf.alleFinancien) { 
 				if (f.getKwartaal() == 3) { 
 					model.addRow(new Object[]{f.getSoort(), f.getBedrag(), f.getDatum()});
 				} 
 			}
 		}else if(dropDownKwartaal.getSelectedItem() == "Vierde kwartaal") {
+			clearTable();
 			for (Financien f : hetBedrijf.alleFinancien) { 
 				if (f.getKwartaal() == 4) {
 					model.addRow(new Object[]{f.getSoort(), f.getBedrag(), f.getDatum()});
