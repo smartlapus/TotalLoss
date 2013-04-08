@@ -17,7 +17,7 @@ public class KlantOverzichtFrame extends Hoofdmenu implements ActionListener{
 	private JComboBox dropDownKlanten;
 	private JTextField tfVoor, tfAchter, tfEmail, tfPostcode, tfPlaats, tfHuisnummer, tfTelnummer, tfAutomerk, tfAutojaar, tfAutotype;
 	private JPanel contactPanel;
-	private JButton pasAan, slaOp;
+	private JButton pasAan, slaOp, verwijder;
 	
 	public KlantOverzichtFrame(Bedrijf b){
 		super(b);
@@ -65,7 +65,8 @@ public class KlantOverzichtFrame extends Hoofdmenu implements ActionListener{
 		  tfAutojaar = new JTextField(9); tfAutojaar.setEditable(false);   contactPanel.add(tfAutojaar); 
 		  
 		  pasAan = new JButton("Aanpassen"); contactPanel.add(pasAan); pasAan.addActionListener(this);
-		  slaOp = new JButton("Opslaan"); contactPanel.add(slaOp); slaOp.setVisible(false); slaOp.addActionListener(this);
+		  verwijder = new JButton("Verwijderen"); contactPanel.add(verwijder); verwijder.addActionListener(this);
+		  slaOp = new JButton("Opslaan"); slaOp.addActionListener(this);
 		
 		  onSelectedItemChanged();
 	}
@@ -117,8 +118,21 @@ public class KlantOverzichtFrame extends Hoofdmenu implements ActionListener{
 				tfAutotype.setEditable(true);
 				tfAutojaar.setEditable(true);
 				pasAan.setVisible(false);
-				slaOp.setVisible(true);
+				contactPanel.remove(pasAan);
+				contactPanel.add(slaOp);
 			}
+		  
+		  if(click.getSource() == verwijder){
+			  Object obj = dropDownKlanten.getSelectedItem();
+				if (obj instanceof Klant){
+					Klant k = (Klant)obj;
+					hetBedrijf.verwijderKlant(k);
+					JOptionPane.showMessageDialog(null, "Klant is succesvol verwijderd");
+					KlantOverzichtFrame klantoverzicht = new KlantOverzichtFrame(hetBedrijf);
+					this.dispose();
+				}
+		  }
+		  
 		  if (click.getSource() == slaOp){
 			  Object obj = dropDownKlanten.getSelectedItem();
 				if (obj instanceof Klant){

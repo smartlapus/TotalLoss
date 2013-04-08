@@ -1,12 +1,21 @@
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JComboBox;
 
 
 public class KlantVerwijderenFrame extends Hoofdmenu implements ActionListener{
 
+	private JComboBox dropDownKlanten;
+	
 	public KlantVerwijderenFrame(Bedrijf b){
 		super(b);
 		setTitle("AutoTotaalDiensten - Klant Verwijderen");
+		
+		dropDownKlanten = new JComboBox(hetBedrijf.getAlleKlanten().toArray(new Klant[0]));
+		add(dropDownKlanten, BorderLayout.NORTH);
+		dropDownKlanten.addActionListener(this);
 	}
 	
 	public void ActionPerformed(ActionEvent click){
