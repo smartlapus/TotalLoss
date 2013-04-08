@@ -30,7 +30,7 @@ public class MedewerkerOverzichtFrame extends Hoofdmenu implements ActionListene
 		dropDownMedewerkers.addActionListener(this);
 		
 		 contactPanel = new JPanel();
-		 contactPanel.setBorder(new TitledBorder( "Gegevens van de klant" )); 
+		 contactPanel.setBorder(new TitledBorder( "Gegevens van de Medewerker" )); 
 		 contactPanel.setLayout(new GridLayout(10, 2, 5, 5));
 		 add(contactPanel, BorderLayout.SOUTH);
 		 

@@ -1,15 +1,38 @@
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
 
 
 public class KlusOverzichtFrame extends Hoofdmenu implements ActionListener{
 
+	private JComboBox dropDownKlus;
+	private JTextField tfNaam, tfWerkzaamheden, tfKenteken, tfDatum;
+	private JPanel contactPanel;
+	private JButton pasAan, slaOp, verwijder;
 	public KlusOverzichtFrame(Bedrijf b){
 		super(b);
 		setTitle("AutoTotaalDiensten - Overzicht van klussen");
+		
+		setLayout(new BorderLayout());
+		setSize(520, 500);
+		
+		dropDownKlus = new JComboBox(hetBedrijf.getAlleKlussen().toArray(new Monteur[0]));
+		add(dropDownKlus, BorderLayout.NORTH);
+		dropDownKlus.addActionListener(this);
+		
+		 contactPanel = new JPanel();
+		 contactPanel.setBorder(new TitledBorder( "Gegevens van de Medewerker" )); 
+		 contactPanel.setLayout(new GridLayout(10, 2, 5, 5));
+		 add(contactPanel, BorderLayout.SOUTH);
 	}
 	
 	public void ActionPerformed(ActionEvent click){

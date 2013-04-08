@@ -65,7 +65,7 @@ public class KlusToevoegenFrame extends Hoofdmenu implements ActionListener{
 	    savebutton.addActionListener(this);
 	}
 	
-	public void ActionPerformed(ActionEvent click){
+	public void actionPerformed(ActionEvent click){
 		if(click.getSource() == cancelbutton){
 			naamInvoer.setText("");
 			werkzaamhedenInvoer.setText("");
