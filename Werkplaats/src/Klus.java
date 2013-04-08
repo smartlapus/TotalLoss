@@ -4,6 +4,7 @@ public class Klus {
 	private String werkzaamheden;
 	private String kenteken;
 	private String datum;
+	private Monteur monteur;
 	
 	public Klus (String nm, String werk, String kent, String dat){
 		naam = nm;
@@ -42,6 +43,14 @@ public class Klus {
 	public void updateStatus(){
 		
 	}
+	
+	public Monteur getMonteur() {
+		return monteur;
+	}
+	public void setMonteur(Monteur monteur) {
+		this.monteur = monteur;
+	}
+	
 	public String toString(){
 		String s = naam + " " + werkzaamheden;
 		return s;

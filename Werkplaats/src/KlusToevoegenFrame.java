@@ -1,6 +1,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 
 import java.awt.*;
 
@@ -9,57 +10,39 @@ public class KlusToevoegenFrame extends Hoofdmenu implements ActionListener{
 	private JLabel naam, werkzaamheden, kenteken, datum;
 	private JTextField naamInvoer, werkzaamhedenInvoer, kentekenInvoer, datumInvoer;
 	private JButton cancelbutton, savebutton;
+	private JComboBox dropDownMonteurs;
+	private JTextField tfNaam, tfWerkzaamheden, tfKenteken, tfDatum;
+	private JPanel contactPanel;
 
 	public KlusToevoegenFrame(Bedrijf b){
 		super(b);
 		setTitle("AutoTotaalDiensten - Klus Toevoegen");
 		
-		JLabel l;
-	    JTextField t;
-	   // JButton b1, b2;
-	    Container cp = getContentPane();
-	    cp.setLayout(new GridBagLayout());
-	    cp.setBackground(UIManager.getColor("control"));
-	    GridBagConstraints c = new GridBagConstraints();
-
-	    c.gridx = 0;
-	    c.gridy = GridBagConstraints.RELATIVE;
-	    c.gridwidth = 1;
-	    c.gridheight = 1;
-	    c.insets = new Insets(2, 2, 2, 2);
-	    c.anchor = GridBagConstraints.EAST;
-	   
-	    cp.add(l = new JLabel("Voornaam:", SwingConstants.RIGHT), c);
-	    l.setDisplayedMnemonic('n');
-	    cp.add(l = new JLabel("Werkzaamheden:", SwingConstants.RIGHT), c);
-	    l.setDisplayedMnemonic('w');
-	    cp.add(l = new JLabel("Kenteken:", SwingConstants.RIGHT), c);
-	    l.setDisplayedMnemonic('k');
-	    cp.add(l = new JLabel("Datum:", SwingConstants.RIGHT), c);
-	    l.setDisplayedMnemonic('s');
-	    cp.add(cancelbutton = new JButton("Clear"), c);
-	    cancelbutton.setMnemonic('C');
-	    c.gridx = 1;
-	    c.gridy = 0;
-	    c.weightx = 1.0;
-	    c.fill = GridBagConstraints.HORIZONTAL;
-	    c.anchor = GridBagConstraints.CENTER;
-
-	    cp.add(naamInvoer = new JTextField(35), c);
-	    naamInvoer.setFocusAccelerator('n');
-	    c.gridx = 1;
-	    c.gridy = GridBagConstraints.RELATIVE;
-	   
-	    cp.add(werkzaamhedenInvoer = new JTextField(35), c);
-	    werkzaamhedenInvoer.setFocusAccelerator('h');
-	    cp.add(kentekenInvoer = new JTextField(35), c);
-	    kentekenInvoer.setFocusAccelerator('c');
-	    cp.add(datumInvoer = new JTextField(35), c);
-	    datumInvoer.setFocusAccelerator('s');
-	    c.weightx = 0.0;
-	    c.fill = GridBagConstraints.NONE;
-	    cp.add(savebutton = new JButton("OK"), c);
-	    savebutton.setMnemonic('o');
+		 contactPanel = new JPanel();
+		// contactPanel.setBorder(new TitledBorder( "Klus toevoegen" )); 
+		 contactPanel.setLayout(new GridLayout(6, 2, 5, 5));
+		 add(contactPanel, BorderLayout.NORTH);
+		
+		
+	    
+	    JLabel l1 = new JLabel("Naam: "); contactPanel.add(l1);
+		  tfNaam = new JTextField(9); contactPanel.add(tfNaam);  
+		  
+		  JLabel l2 = new JLabel("Werkzaamheen: "); contactPanel.add(l2); 
+		  tfWerkzaamheden = new JTextField(9); contactPanel.add(tfWerkzaamheden);  
+		  
+		  JLabel l3 = new JLabel("Kenteken: "); contactPanel.add(l3); 
+		  tfKenteken = new JTextField(9); contactPanel.add(tfKenteken); 
+		  
+		  JLabel l4 = new JLabel("Datum: "); contactPanel.add(l4); 
+		  tfDatum = new JTextField(9); contactPanel.add(tfDatum); 
+		  
+		  JLabel l5 = new JLabel("Uitvoerende Monteur: "); contactPanel.add(l5); 
+		  dropDownMonteurs = new JComboBox(hetBedrijf.getAlleMonteurs().toArray(new Monteur[0]));
+			dropDownMonteurs.addActionListener(this); contactPanel.add(dropDownMonteurs);
+		  
+		  savebutton = new JButton("Opslaan"); contactPanel.add(savebutton); savebutton.addActionListener(this);
+		  cancelbutton = new JButton("Annuleren"); contactPanel.add(cancelbutton); cancelbutton.addActionListener(this);
 	    
 	    cancelbutton.addActionListener(this);
 	    savebutton.addActionListener(this);
@@ -75,16 +58,21 @@ public class KlusToevoegenFrame extends Hoofdmenu implements ActionListener{
 		}
 		if(click.getSource() == savebutton){
 			Klus nwk = null; 
-			String vnm = naamInvoer.getText();  
-			String werk = werkzaamhedenInvoer.getText(); 
-			String kent = kentekenInvoer.getText(); 
-			String dat = datumInvoer.getText(); 
+			Object obj = dropDownMonteurs.getSelectedItem();
+			if (obj instanceof Monteur){
+				Monteur m = (Monteur)obj;
+			String vnm = tfNaam.getText();  
+			String werk = tfWerkzaamheden.getText(); 
+			String kent = tfKenteken.getText(); 
+			String dat = tfDatum.getText(); 
 			nwk = new Klus(vnm, werk, kent, dat);
 			hetBedrijf.voegKlusToe(nwk);
+			nwk.setMonteur(m);
 			
 			JOptionPane.showMessageDialog(null, "Klus is succesvol toegevoegd");
 			KlusOverzichtFrame klusoverzicht = new KlusOverzichtFrame(hetBedrijf);
 			this.dispose();
+			}
 		}
 		if(click.getSource() == menuItemAgenda1){
 			AgendaFrame agenda = new AgendaFrame(hetBedrijf);
