@@ -89,17 +89,21 @@ public class AgendaFrame extends Hoofdmenu implements ActionListener{
 				{
 					//Pop-up die alle klussen toont + optie om aan te passen.	
 					Object[] options = {"Oke", "Klus aanpassen" };
-					int n = JOptionPane.showOptionDialog(null,
-					    "Klussen op deze datum: \n " + "- " + k, "",
-					    JOptionPane.YES_NO_OPTION,
-					    JOptionPane.INFORMATION_MESSAGE,
-					    null,
-					    options,
-					    options[1]);
-					if(n == JOptionPane.NO_OPTION)
+					int bevestingOptie = JOptionPane.showOptionDialog(null,
+							"Klussen op deze datum: \n " + "- " + k, "",
+							JOptionPane.YES_NO_OPTION,
+							JOptionPane.INFORMATION_MESSAGE,
+							null,
+							options,
+							options[1]);
+					if(bevestingOptie == JOptionPane.NO_OPTION)
 					{
 						KlusOverzichtFrame klusoverzicht = new KlusOverzichtFrame(hetBedrijf);
 						this.dispose();
+					}
+					if(bevestingOptie == JOptionPane.YES_OPTION)
+					{
+						break;
 					}
 				}
 				else if(!select.equals(k.getDatum()) || !select2.equals(k.getDatum()) 
@@ -108,6 +112,7 @@ public class AgendaFrame extends Hoofdmenu implements ActionListener{
 						|| !select7.equals(k.getDatum()) || !select8.equals(k.getDatum()))
 				{
 					JOptionPane.showMessageDialog(null, "Er zijn geen klussen op deze datum");
+					break;
 				}
 			}
 

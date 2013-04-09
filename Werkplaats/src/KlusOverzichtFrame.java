@@ -136,7 +136,7 @@ public class KlusOverzichtFrame extends Hoofdmenu implements ActionListener{
 				{
 					JOptionPane.showMessageDialog(null, "De naam van de klus mag geen cijfer bevatten.");
 				}
-				if(!tfDatum.getText().matches("^\\d*$"))
+				if(!tfDatum.getText().matches(".*[0-9].*"))
 				{
 					JOptionPane.showMessageDialog(null, "Een datum bestaat uit cijfers, behalve die van jou.");
 				}		

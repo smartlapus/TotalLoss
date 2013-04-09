@@ -145,7 +145,7 @@ public class MedewerkerOverzichtFrame extends Hoofdmenu implements ActionListene
 		  {
 			  Object obj = dropDownMedewerkers.getSelectedItem();
 			
-					if(tfVoor.getText().equals("") || tfAchter.getText().equals("") || tfEmail.getText().equals("") 
+					if(tfVoor.getText().equals("") || tfAchter.getText().equals("")
 							 || tfPostcode.getText().equals("") || tfHuisnummer.getText().equals("") 
 							 || tfPlaats.getText().equals("") || tfTelnummer.getText().equals("") 
 							 || tfBSN.getText().equals("") || tfReknummer.getText().equals(""))

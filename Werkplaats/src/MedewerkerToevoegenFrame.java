@@ -13,7 +13,7 @@ public class MedewerkerToevoegenFrame extends Hoofdmenu implements ActionListene
 	
 	public MedewerkerToevoegenFrame(Bedrijf b){
 		super(b);
-		setTitle("AutoTotaalDiensten - Klant Toevoegen");
+		setTitle("AutoTotaalDiensten - Medewerker Toevoegen");
 		
 		 	JLabel l;
 		    //JTextField t;
@@ -131,7 +131,7 @@ public class MedewerkerToevoegenFrame extends Hoofdmenu implements ActionListene
 			{
 				nwm = new Monteur(vnm, anm, pcode, huisnr, plts, mail, telnr, bsn, reknr);
 				hetBedrijf.voegMonteurToe(nwm);
-				JOptionPane.showMessageDialog(null, "Klant is succesvol toegevoegd");
+				JOptionPane.showMessageDialog(null, "Medewerker is succesvol toegevoegd");
 				MedewerkerOverzichtFrame medewerkeroverzicht = new MedewerkerOverzichtFrame(hetBedrijf);
 				this.dispose();
 			}
