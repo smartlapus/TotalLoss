@@ -11,7 +11,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
-
 public class Hoofdmenu extends JFrame implements ActionListener{
 	protected JMenu menuKlant, menuAgenda, menuMedewerker, menuGarage, menuKlus, menuBeheer;
 	protected JMenuBar menuBar;
@@ -27,14 +26,15 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 		setLayout(new FlowLayout());
 		setSize(520, 400);
 		setLocationRelativeTo(null);
-		ImageIcon imglogo = new ImageIcon("ATD logo.png");
+		
+		//Images aanmaken
 		ImageIcon imgklant = new ImageIcon("people-icon.png");
 		ImageIcon imgagenda = new ImageIcon("icon-schedule-lg.png");
 		ImageIcon imgmedewerker = new ImageIcon("ppl_icon.png");
 		ImageIcon imgklus = new ImageIcon("klus-icon.png");
 		ImageIcon imgbeheer = new ImageIcon("beheer-icon.png");
 		
-
+		//Menu
 		menuBar = new JMenuBar();
 		menuAgenda = new JMenu("Agenda"); menuBar.add(menuAgenda);
 		menuKlant = new JMenu("Klanten"); menuBar.add(menuKlant);
@@ -77,7 +77,6 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 		menuItemBeheer1.addActionListener(this);
 
 		setJMenuBar(menuBar);
-		setIconImage(imglogo.getImage());
 		setTitle("AutoTotaalDiensten - Hoofdmenu"); 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
@@ -90,31 +89,31 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 			this.dispose();
 		} 
 		
-		if(click.getSource() == menuItemKlus1){
+		if(click.getSource() == menuItemKlus1) {
 			KlusToevoegenFrame klustoevoegen = new KlusToevoegenFrame(hetBedrijf);
 			this.dispose();
 		}
-		if(click.getSource() == menuItemKlus2){
+		if(click.getSource() == menuItemKlus2) {
 			KlusOverzichtFrame klusoverzicht = new KlusOverzichtFrame(hetBedrijf);
 			this.dispose();
 		}
 		
-		if(click.getSource() == menuItemKlant1){
+		if(click.getSource() == menuItemKlant1) {
 			KlantOverzichtFrame klantoverzicht = new KlantOverzichtFrame(hetBedrijf);
 			this.dispose();
 		}
 		
-		if(click.getSource() == menuItemKlant2){
+		if(click.getSource() == menuItemKlant2) {
 			KlantToevoegenFrame klanttoevoegen = new KlantToevoegenFrame(hetBedrijf);
 			this.dispose();
 		}
 		
-		if(click.getSource() == menuItemMedewerker1){
+		if(click.getSource() == menuItemMedewerker1) {
 			MedewerkerOverzichtFrame medewerkeroverzicht = new MedewerkerOverzichtFrame(hetBedrijf);
 			this.dispose();
 		}
 		
-		if(click.getSource() == menuItemMedewerker2){
+		if(click.getSource() == menuItemMedewerker2) {
 			MedewerkerToevoegenFrame Medewerkertoevoegen = new MedewerkerToevoegenFrame(hetBedrijf);
 			this.dispose();
 		}
@@ -124,5 +123,4 @@ public class Hoofdmenu extends JFrame implements ActionListener{
 	public void setHetBoek(Bedrijf nwb) { 
 		hetBedrijf = nwb;
 	}
-
 }

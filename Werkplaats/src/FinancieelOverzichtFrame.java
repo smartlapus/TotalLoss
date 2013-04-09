@@ -10,12 +10,11 @@ public class FinancieelOverzichtFrame extends Hoofdmenu implements ActionListene
 	private JComboBox dropDownKwartaal;
 	private JTable tabel;
 	private JScrollPane scrollPane;
-	private DefaultTableModel model = new DefaultTableModel(new Object[][] {
-	{ "", "", "" } }, new Object[] { "Af/bij", "Bedrag", "Datum" });
+	private DefaultTableModel model = new DefaultTableModel(
+	new Object[][] { { "", "", "" } }, new Object[] { "Af/bij", "Bedrag", "Datum" });
 	String[] kwartaalKeuze = { "Selecteer een kwartaal", "Eerste kwartaal", "Tweede kwartaal", "Derde kwartaal", "Vierde kwartaal" };
 
-	public FinancieelOverzichtFrame(Bedrijf b)
-	{
+	public FinancieelOverzichtFrame(Bedrijf b) {
 		super(b);
 		setTitle("AutoTotaalDiensten - Financieel Overzicht");	
 		setLayout(new BorderLayout());
@@ -28,8 +27,8 @@ public class FinancieelOverzichtFrame extends Hoofdmenu implements ActionListene
 		add(new JScrollPane(tabel), BorderLayout.CENTER);
 	}
 	
-	public void clearTable()
-	{
+	//ClearTable functie
+	public void clearTable() {
 		while (tabel.getRowCount() > 0) {
             ((DefaultTableModel) tabel.getModel()).removeRow(0);
         }
@@ -66,6 +65,7 @@ public class FinancieelOverzichtFrame extends Hoofdmenu implements ActionListene
 			}
 		}
 		
+		//Menu actionlisteners
 		if(click.getSource() == menuItemAgenda1){
 			AgendaFrame agenda = new AgendaFrame(hetBedrijf);
 			this.dispose();

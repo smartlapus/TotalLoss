@@ -4,7 +4,7 @@ import javax.swing.*;
 
 import java.awt.*;
 
-public class MedewerkerToevoegenFrame extends Hoofdmenu implements ActionListener{
+public class MedewerkerToevoegenFrame extends Hoofdmenu implements ActionListener {
 
 	private JLabel naam, achternaam, postcode, huisnummer, plaats, email, telnummer;
 	private JTextField naaminvoer, achternaaminvoer, postcodeinvoer, huisnummerinvoer, plaatsinvoer, emailinvoer, telnummerinvoer, bsninvoer, reknummerinvoer;
@@ -30,6 +30,7 @@ public class MedewerkerToevoegenFrame extends Hoofdmenu implements ActionListene
 		    c.insets = new Insets(2, 2, 2, 2);
 		    c.anchor = GridBagConstraints.EAST;
 
+		    //Labels
 		    cp.add(l = new JLabel("Voornaam:", SwingConstants.RIGHT), c);
 		    l.setDisplayedMnemonic('n');
 		    cp.add(l = new JLabel("Achternaam:", SwingConstants.RIGHT), c);
@@ -57,6 +58,7 @@ public class MedewerkerToevoegenFrame extends Hoofdmenu implements ActionListene
 		    c.fill = GridBagConstraints.HORIZONTAL;
 		    c.anchor = GridBagConstraints.CENTER;
 
+		    //Textfields
 		    cp.add(naaminvoer = new JTextField(35), c);
 		    naaminvoer.setFocusAccelerator('n');
 		    c.gridx = 1;
@@ -87,8 +89,8 @@ public class MedewerkerToevoegenFrame extends Hoofdmenu implements ActionListene
 		
 		
 	}
-	public void actionPerformed(ActionEvent click){
-		if(click.getSource() == cancelbutton){
+	public void actionPerformed(ActionEvent click) {
+		if(click.getSource() == cancelbutton) {
 			naaminvoer.setText("");
 			achternaaminvoer.setText("");
 			postcodeinvoer.setText("");
@@ -101,8 +103,7 @@ public class MedewerkerToevoegenFrame extends Hoofdmenu implements ActionListene
 			JOptionPane.showMessageDialog(null, "Toevoegen is geannuleerd");
 		}
 		
-		if(click.getSource() == savebutton)
-		{
+		if(click.getSource() == savebutton) {
 			Monteur nwm = null; 
 			String vnm = naaminvoer.getText();  
 			String anm = achternaaminvoer.getText();
@@ -119,8 +120,7 @@ public class MedewerkerToevoegenFrame extends Hoofdmenu implements ActionListene
 			{
 				JOptionPane.showMessageDialog(null, "AUB alle velden invoeren");
 			}
-			
-			if(vnm.matches(".*[0-9].*") || anm.matches(".*[0-9].*") || plts.matches(".*[0-9].*"))
+			else if(vnm.matches(".*[0-9].*") || anm.matches(".*[0-9].*") || plts.matches(".*[0-9].*"))
 			{
 				JOptionPane.showMessageDialog(null, "U heeft een cijfer ingevuld bij één of meerdere velden: \n"
 						+ vnm + "\n" + anm + "\n" + plts);
@@ -137,7 +137,7 @@ public class MedewerkerToevoegenFrame extends Hoofdmenu implements ActionListene
 			}
 		}
 		
-		
+		//Menu actionListeners
 		if(click.getSource() == menuItemAgenda1){
 			AgendaFrame agenda = new AgendaFrame(hetBedrijf);
 			this.dispose();

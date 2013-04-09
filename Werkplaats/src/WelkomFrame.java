@@ -4,8 +4,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-
-public class WelkomFrame extends Hoofdmenu implements ActionListener{
+public class WelkomFrame extends Hoofdmenu implements ActionListener {
 
 	public WelkomFrame(Bedrijf b) {
 		super(b);
@@ -14,8 +13,7 @@ public class WelkomFrame extends Hoofdmenu implements ActionListener{
 		setIconImage(hoofdmenulogo.getImage());
 	}
 	
-	public void actionPerformed(ActionEvent click)
-	{
+	public void actionPerformed(ActionEvent click) {
 		if(click.getSource() == menuItemAgenda1){
 			AgendaFrame agenda = new AgendaFrame(hetBedrijf);
 			this.dispose();
@@ -54,5 +52,4 @@ public class WelkomFrame extends Hoofdmenu implements ActionListener{
 			this.dispose();
 		}
 	}
-
 }

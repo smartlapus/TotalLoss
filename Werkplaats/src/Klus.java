@@ -1,4 +1,3 @@
-
 public class Klus {
 	private String naam;
 	private String werkzaamheden;
@@ -6,51 +5,56 @@ public class Klus {
 	private String datum;
 	protected Monteur monteur;
 	
-	public Klus (String nm, String werk, String kent, String dat){
+	public Klus (String nm, String werk, String kent, String dat) {
 		naam = nm;
 		werkzaamheden = werk;
 		kenteken = kent;
 		datum = dat;
 	}
-	public String getNaam()
-	{
+	
+	//Getters
+	public String getNaam()	{
 		return naam;
 	}
-	public void setNaam(String naam) {
-		this.naam = naam;
-	}
-	public String getWerkzaamheden()
-	{
+	
+	public String getWerkzaamheden() {
 		return werkzaamheden;
 	}
-	public void setWerkzaamheden(String werkzaamheden) {
-		this.werkzaamheden = werkzaamheden;
-	}
-	public String getKenteken()
-	{
+
+	public String getKenteken()	{
 		return kenteken;
 	}
-	public void setKenteken(String kenteken) {
-		this.kenteken = kenteken;
-	}
-	public String getDatum()
-	{
+
+	public String getDatum() {
 		return datum;
-	}
-	public void setDatum(String datum) {
-		this.datum = datum;
-	}
-	public void updateStatus(){
-		
 	}
 	
 	public Monteur getMonteur() {
 		return monteur;
 	}
+	
+	//Setters
+	public void setNaam(String naam) {
+		this.naam = naam;
+	}
+	
+	public void setWerkzaamheden(String werkzaamheden) {
+		this.werkzaamheden = werkzaamheden;
+	}
+	
+	public void setKenteken(String kenteken) {
+		this.kenteken = kenteken;
+	}
+	
+	public void setDatum(String datum) {
+		this.datum = datum;
+	}
+	
 	public void setMonteur(Monteur monteur) {
 		this.monteur = monteur;
 	}
 	
+	//ToString
 	public String toString(){
 		String s = naam + " " + werkzaamheden + " " + kenteken + " " + datum;
 		return s;
@@ -61,5 +65,4 @@ public class Klus {
 		String aG = naam + ". \n " + werkzaamheden + ". \n " + kenteken + ". \n " + datum; 
 		return aG;
 	}
-	
 }

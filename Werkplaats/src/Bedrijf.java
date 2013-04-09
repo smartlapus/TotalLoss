@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 
-
 public class Bedrijf {
-
 	private String naam;
 	private String adres;
 	protected ArrayList<Klant> alleKlanten;
@@ -19,6 +17,7 @@ public class Bedrijf {
 		alleKlussen = new ArrayList<Klus>();
 	}
 	
+	//Getters
 	public ArrayList<Klant> getAlleKlanten() {
 		return alleKlanten;
 	}
@@ -39,20 +38,22 @@ public class Bedrijf {
 		return naam;
 	}
 
-	public void setNaam(String naam) {
-		this.naam = naam;
-	}
-
 	public String getAdres() {
 		return adres;
+	}
+	
+	//Setters
+	public void setNaam(String naam) {
+		this.naam = naam;
 	}
 
 	public void setAdres(String adres) {
 		this.adres = adres;
 	}
 
-	public void voegKlantToe(Klant klant){
-		if(!alleKlanten.contains(klant)){
+	//Functions
+	public void voegKlantToe(Klant klant) {
+		if(!alleKlanten.contains(klant)) {
 			alleKlanten.add(klant);
 			System.out.println("Klant is toegevoegd");
 			System.out.println(alleKlanten);
@@ -67,24 +68,23 @@ public class Bedrijf {
 		}
 	}
 	
-	public void voegMonteurToe(Monteur medewerker){
-		if(!alleMonteurs.contains(medewerker)){
+	public void voegMonteurToe(Monteur medewerker) {
+		if(!alleMonteurs.contains(medewerker)) {
 			alleMonteurs.add(medewerker);
 			System.out.println("Monteur is toegevoegd");
 			System.out.println(alleMonteurs);
 		}
 	}
-	public void voegKlusToe(Klus klus){
-		if(!alleKlussen.contains(klus))
-		{
+	public void voegKlusToe(Klus klus) {
+		if(!alleKlussen.contains(klus)) {
 			alleKlussen.add(klus);
 			System.out.println("Klus is toegevoegd");
 			System.out.println(alleKlussen);
 		}
 	}
 	
-	public void verwijderMonteur(Monteur monteur){
-		if(alleMonteurs.contains(monteur)){
+	public void verwijderMonteur(Monteur monteur) {
+		if(alleMonteurs.contains(monteur)) {
 			alleMonteurs.remove(monteur);
 			System.out.println("Monteur is verwijderd");
 			System.out.println(alleMonteurs);
@@ -92,7 +92,7 @@ public class Bedrijf {
 	}
 	
 	public void verwijderKlus(Klus klus){
-		if(alleKlussen.contains(klus)){
+		if(alleKlussen.contains(klus)) {
 			alleKlussen.remove(klus);
 			System.out.println("Klus is verwijderd");
 			System.out.println(alleKlussen);
@@ -100,18 +100,8 @@ public class Bedrijf {
 	}
 	
 	public void voegFinancienToe(Financien fin){
-		if(!alleFinancien.contains(fin))
-		{
+		if(!alleFinancien.contains(fin)) {
 			alleFinancien.add(fin);
 		}
-	}
-	
-	public void vraagAgendaOp()
-	{
-		// Agenda dag + maand + jaar equals dag + maand + jaar van klus.
-	}
-	public void vraagBezettingOp()
-	{
-		//Bezetting dag + maand + jaar worden opgevraagd.
 	}
 }

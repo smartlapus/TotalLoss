@@ -11,15 +11,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-
-public class MedewerkerOverzichtFrame extends Hoofdmenu implements ActionListener{
+public class MedewerkerOverzichtFrame extends Hoofdmenu implements ActionListener {
 
 	private JComboBox dropDownMedewerkers;
 	private JTextField tfVoor, tfAchter, tfEmail, tfPostcode, tfPlaats, tfHuisnummer, tfTelnummer, tfBSN, tfReknummer;
 	private JPanel contactPanel;
 	private JButton pasAan, slaOp, verwijder;
 	
-	public MedewerkerOverzichtFrame(Bedrijf b){
+	public MedewerkerOverzichtFrame(Bedrijf b) {
 		super(b);
 		setTitle("AutoTotaalDiensten - Overzicht van Medewerkers");
 		setLayout(new BorderLayout());
@@ -29,48 +28,50 @@ public class MedewerkerOverzichtFrame extends Hoofdmenu implements ActionListene
 		add(dropDownMedewerkers, BorderLayout.NORTH);
 		dropDownMedewerkers.addActionListener(this);
 		
-		 contactPanel = new JPanel();
-		 contactPanel.setBorder(new TitledBorder( "Gegevens van de Medewerker" )); 
-		 contactPanel.setLayout(new GridLayout(10, 2, 5, 5));
-		 add(contactPanel, BorderLayout.SOUTH);
+		//Panel
+		contactPanel = new JPanel();
+		contactPanel.setBorder(new TitledBorder( "Gegevens van de Medewerker" )); 
+		contactPanel.setLayout(new GridLayout(10, 2, 5, 5));
+		add(contactPanel, BorderLayout.SOUTH);
 		 
-		  JLabel l1 = new JLabel("Voornaam: "); contactPanel.add(l1);
-		  tfVoor = new JTextField(9); tfVoor.setEditable(false); contactPanel.add(tfVoor);  
+		//Labels
+		JLabel l1 = new JLabel("Voornaam: "); contactPanel.add(l1);
+		tfVoor = new JTextField(9); tfVoor.setEditable(false); contactPanel.add(tfVoor);  
 		  
-		  JLabel l2 = new JLabel("Achternaam: "); contactPanel.add(l2); 
-		  tfAchter = new JTextField(9); tfAchter.setEditable(false); contactPanel.add(tfAchter);  
+		JLabel l2 = new JLabel("Achternaam: "); contactPanel.add(l2); 
+		tfAchter = new JTextField(9); tfAchter.setEditable(false); contactPanel.add(tfAchter);  
 		  
-		  JLabel l3 = new JLabel("Postcode: "); contactPanel.add(l3); 
-		  tfPostcode = new JTextField(9); tfPostcode.setEditable(false);   contactPanel.add(tfPostcode); 
+		JLabel l3 = new JLabel("Postcode: "); contactPanel.add(l3); 
+		tfPostcode = new JTextField(9); tfPostcode.setEditable(false);   contactPanel.add(tfPostcode); 
 		  
-		  JLabel l4 = new JLabel("Huisnummer: "); contactPanel.add(l4); 
-		  tfHuisnummer = new JTextField(9); tfHuisnummer.setEditable(false);   contactPanel.add(tfHuisnummer); 
+		JLabel l4 = new JLabel("Huisnummer: "); contactPanel.add(l4); 
+		tfHuisnummer = new JTextField(9); tfHuisnummer.setEditable(false);   contactPanel.add(tfHuisnummer); 
 		  
-		  JLabel l5 = new JLabel("Plaats: "); contactPanel.add(l5); 
-		  tfPlaats = new JTextField(9); tfPlaats.setEditable(false);   contactPanel.add(tfPlaats); 
+		JLabel l5 = new JLabel("Plaats: "); contactPanel.add(l5); 
+		tfPlaats = new JTextField(9); tfPlaats.setEditable(false);   contactPanel.add(tfPlaats); 
 		  
-		  JLabel l6 = new JLabel("Email-adres: "); contactPanel.add(l6); 
-		  tfEmail = new JTextField(9); tfEmail.setEditable(false);   contactPanel.add(tfEmail); 
+		JLabel l6 = new JLabel("Email-adres: "); contactPanel.add(l6); 
+		tfEmail = new JTextField(9); tfEmail.setEditable(false);   contactPanel.add(tfEmail); 
 		  
-		  JLabel l7 = new JLabel("Telefoonnummer: "); contactPanel.add(l7); 
-		  tfTelnummer = new JTextField(9); tfTelnummer.setEditable(false);   contactPanel.add(tfTelnummer);
+		JLabel l7 = new JLabel("Telefoonnummer: "); contactPanel.add(l7); 
+		tfTelnummer = new JTextField(9); tfTelnummer.setEditable(false);   contactPanel.add(tfTelnummer);
 		  
-		  JLabel l8 = new JLabel("BSN-nummer: "); contactPanel.add(l8); 
-		  tfBSN = new JTextField(9); tfBSN.setEditable(false);   contactPanel.add(tfBSN); 
+		JLabel l8 = new JLabel("BSN-nummer: "); contactPanel.add(l8); 
+		tfBSN = new JTextField(9); tfBSN.setEditable(false);   contactPanel.add(tfBSN); 
 		  
-		  JLabel l9 = new JLabel("Rekeningnummer: "); contactPanel.add(l9); 
-		  tfReknummer = new JTextField(9); tfReknummer.setEditable(false);   contactPanel.add(tfReknummer);
+		JLabel l9 = new JLabel("Rekeningnummer: "); contactPanel.add(l9); 
+		tfReknummer = new JTextField(9); tfReknummer.setEditable(false);   contactPanel.add(tfReknummer);
 		  
-		  pasAan = new JButton("Aanpassen"); contactPanel.add(pasAan); pasAan.addActionListener(this);
-		  verwijder = new JButton("Verwijderen"); contactPanel.add(verwijder); verwijder.addActionListener(this);
-		  slaOp = new JButton("Opslaan"); slaOp.addActionListener(this);
+		pasAan = new JButton("Aanpassen"); contactPanel.add(pasAan); pasAan.addActionListener(this);
+		verwijder = new JButton("Verwijderen"); contactPanel.add(verwijder); verwijder.addActionListener(this);
+		slaOp = new JButton("Opslaan"); slaOp.addActionListener(this);
 		
-		  onSelectedItemChanged();
+		onSelectedItemChanged();
 	}
-	private void onSelectedItemChanged()
-	{
+	
+	private void onSelectedItemChanged() {
 		Object obj = dropDownMedewerkers.getSelectedItem();
-		if (obj instanceof Monteur){
+		if (obj instanceof Monteur) {
 			Monteur m = (Monteur)obj;
 			tfVoor.setText(m.getVoornaam());
 			tfAchter.setText(m.getAchternaam());
@@ -81,9 +82,7 @@ public class MedewerkerOverzichtFrame extends Hoofdmenu implements ActionListene
 			tfTelnummer.setText(m.getTelnummer());
 			tfBSN.setText(m.getBsnnr());
 			tfReknummer.setText(m.getReknummer());
-		}
-		
-		else{
+		} else {
 			tfVoor.setText("");
 			tfAchter.setText("");
 			tfEmail.setText("");
@@ -96,11 +95,11 @@ public class MedewerkerOverzichtFrame extends Hoofdmenu implements ActionListene
 			}
 		}
 	public void actionPerformed(ActionEvent click) {  
-		  if (click.getSource() == dropDownMedewerkers){
+		  if (click.getSource() == dropDownMedewerkers) {
 			  onSelectedItemChanged();
 		  } 
 		  
-		  if (click.getSource() == pasAan){
+		  if (click.getSource() == pasAan) {
 				tfVoor.setEditable(true);
 				tfAchter.setEditable(true);
 				tfEmail.setEditable(true);
@@ -115,34 +114,27 @@ public class MedewerkerOverzichtFrame extends Hoofdmenu implements ActionListene
 				contactPanel.add(slaOp);
 			}
 		  
-		  if(click.getSource() == verwijder){
+		  	if(click.getSource() == verwijder) {
 			  Object obj = dropDownMedewerkers.getSelectedItem();
-				if (obj instanceof Monteur){
+				if (obj instanceof Monteur) {
 					Monteur m = (Monteur)obj;
 					
 				int option = JOptionPane.showConfirmDialog(null, "Weet u zeker dat u de medewerker '" + m  + "' wilt verwijderen?", "Bevestiging",JOptionPane.YES_NO_OPTION);
 						
-				if(option == JOptionPane.YES_OPTION){
+				if(option == JOptionPane.YES_OPTION) {
 					hetBedrijf.verwijderMonteur(m);
 					JOptionPane.showMessageDialog(null, "Medewerker '" + m + "' is verwijderd.");
 					
-				}
-				else{
+				} else {
 					return;
 				}
-				
-			
-				
+
 				MedewerkerOverzichtFrame medewerkeroverzicht = new MedewerkerOverzichtFrame(hetBedrijf);
 					this.dispose();
 				}
 		  }
 		  
-		  
-		  
-		  
-		  if (click.getSource() == slaOp)
-		  {
+		  if (click.getSource() == slaOp) {
 			  Object obj = dropDownMedewerkers.getSelectedItem();
 			
 					if(tfVoor.getText().equals("") || tfAchter.getText().equals("")
@@ -159,8 +151,7 @@ public class MedewerkerOverzichtFrame extends Hoofdmenu implements ActionListene
 						JOptionPane.showMessageDialog(null, "U heeft een cijfer ingevuld bij één of meerdere velden: \n"
 								+ tfVoor.getText() + "\n" + tfAchter.getText() + "\n" + tfPlaats.getText());
 					}
-				    else if (obj instanceof Monteur)
-					{
+				    else if (obj instanceof Monteur) {
 				    	Monteur k = (Monteur)obj;
 						k.setVoornaam(tfVoor.getText());
 						k.setAchternaam(tfAchter.getText());
@@ -177,6 +168,7 @@ public class MedewerkerOverzichtFrame extends Hoofdmenu implements ActionListene
 					}
 		  }
 		  
+		  //Menu actionListeners
 		  if(click.getSource() == menuItemAgenda1){
 				AgendaFrame agenda = new AgendaFrame(hetBedrijf);
 				this.dispose();

@@ -1,4 +1,3 @@
-
 public class Auto {
 
 	private String merk;
@@ -11,30 +10,33 @@ public class Auto {
 		bouwjaar = bjaar;
 	}
 
+	//Getters
 	public String getMerk() {
 		return merk;
-	}
-
-	public void setMerk(String merk) {
-		this.merk = merk;
 	}
 
 	public String getType() {
 		return type;
 	}
 
-	public void setType(String type) {
-		this.type = type;
-	}
-
 	public String getBouwjaar() {
 		return bouwjaar;
 	}
-
+	
+	//Setters
+	public void setMerk(String merk) {
+		this.merk = merk;
+	}
+	
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 	public void setBouwjaar(String bouwjaar) {
 		this.bouwjaar = bouwjaar;
 	}
-	
+
+	//ToString
 	public String toString(){
 		return merk + " " + type + ", bouwjaar: " + bouwjaar;
 	}

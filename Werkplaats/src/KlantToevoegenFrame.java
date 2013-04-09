@@ -3,21 +3,19 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.*;
 
-public class KlantToevoegenFrame extends Hoofdmenu implements ActionListener{
-
+public class KlantToevoegenFrame extends Hoofdmenu implements ActionListener {
 	private JLabel naam, achternaam, postcode, huisnummer, plaats, email, telnummer;
 	private JTextField naaminvoer, achternaaminvoer, postcodeinvoer, huisnummerinvoer, plaatsinvoer, emailinvoer, telnummerinvoer, merkinvoer, typeinvoer, bouwjaarinvoer;
 	private JButton cancelbutton, savebutton;
 	
-	
-	public KlantToevoegenFrame(Bedrijf b){
+	public KlantToevoegenFrame(Bedrijf b) {
 		super(b);
 		setTitle("AutoTotaalDiensten - Klant Toevoegen");
 		
 		 	JLabel l;
 		    //JTextField t;
 		    //JButton b;
-		     Container cp = getContentPane();
+		    Container cp = getContentPane();
 		    cp.setLayout(new GridBagLayout());
 		    cp.setBackground(UIManager.getColor("control"));
 		    GridBagConstraints c = new GridBagConstraints();
@@ -28,7 +26,8 @@ public class KlantToevoegenFrame extends Hoofdmenu implements ActionListener{
 		    c.gridheight = 1;
 		    c.insets = new Insets(2, 2, 2, 2);
 		    c.anchor = GridBagConstraints.EAST;
-
+		    
+		    //Labels
 		    cp.add(l = new JLabel("Voornaam:", SwingConstants.RIGHT), c);
 		    l.setDisplayedMnemonic('n');
 		    cp.add(l = new JLabel("Achternaam:", SwingConstants.RIGHT), c);
@@ -57,7 +56,8 @@ public class KlantToevoegenFrame extends Hoofdmenu implements ActionListener{
 		    c.weightx = 1.0;
 		    c.fill = GridBagConstraints.HORIZONTAL;
 		    c.anchor = GridBagConstraints.CENTER;
-
+		    
+		    //Textfields
 		    cp.add(naaminvoer = new JTextField(35), c);
 		    naaminvoer.setFocusAccelerator('n');
 		    c.gridx = 1;
@@ -86,12 +86,11 @@ public class KlantToevoegenFrame extends Hoofdmenu implements ActionListener{
 		    savebutton.setMnemonic('o');
 
 		    cancelbutton.addActionListener(this);
-		    savebutton.addActionListener(this);
-		
-		
+		    savebutton.addActionListener(this);	
 	}
-	public void actionPerformed(ActionEvent click){
-		if(click.getSource() == cancelbutton){
+	
+	public void actionPerformed(ActionEvent click) {
+		if(click.getSource() == cancelbutton) {
 			naaminvoer.setText("");
 			achternaaminvoer.setText("");
 			postcodeinvoer.setText("");
@@ -105,7 +104,7 @@ public class KlantToevoegenFrame extends Hoofdmenu implements ActionListener{
 			JOptionPane.showMessageDialog(null, "Toevoegen is geannuleerd");
 		}
 		
-		if(click.getSource() == savebutton){
+		if(click.getSource() == savebutton) {
 			Klant nwk = null; 
 			Auto nwa = null;
 			String vnm = naaminvoer.getText();  
@@ -125,14 +124,12 @@ public class KlantToevoegenFrame extends Hoofdmenu implements ActionListener{
 			{
 				JOptionPane.showMessageDialog(null, "AUB alle velden invoeren");
 			}
-			
-			if(vnm.matches(".*[0-9].*") || anm.matches(".*[0-9].*") || plts.matches(".*[0-9].*")  
+			else if(vnm.matches(".*[0-9].*") || anm.matches(".*[0-9].*") || plts.matches(".*[0-9].*")  
 					|| merk.matches(".*[0-9].*"))
 			{
 				JOptionPane.showMessageDialog(null, "U heeft een cijfer ingevuld bij één of meerdere velden: \n"
 						+ vnm + "\n" + anm + "\n" + plts + "\n" + merk);
-			}
-			
+			}		
 			else if(!vnm.equals("") && !anm.equals("") && !anm.equals("") && !pcode.equals("") && !huisnr.equals("") 
 					 && !plts.equals("") && !mail.equals("") && !telnr.equals("") && !merk.equals("") 
 					 && !type.equals("") && !bouwjaar.equals(""))

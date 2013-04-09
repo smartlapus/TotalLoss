@@ -23,9 +23,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-
-public class LogIn extends JFrame implements ActionListener, KeyListener {
-	
+public class LogIn extends JFrame implements ActionListener {
 	private static final long serialVersionUID = -6748834332506278417L;
 	private JTextField userName;
 	private JPasswordField password;
@@ -35,35 +33,32 @@ public class LogIn extends JFrame implements ActionListener, KeyListener {
 	private String s; 
 	private Bedrijf hetBedrijf;
 	
-	
-	public LogIn(Bedrijf b){
+	public LogIn(Bedrijf b) {
 		hetBedrijf = b;
 		setLayout(new FlowLayout());
 		setSize(500, 400);
 		setLocationRelativeTo(null);
 		
 		space2 = new JLabel("                                            "); add(space2);
-		ImageIcon imglogo = new ImageIcon("atd.png");
+		ImageIcon imglogo = new ImageIcon("atd.fw.png");
 		JLabel imageLabel = new JLabel(imglogo); add(imageLabel);
 		
+		//Panel
 		inputPanel = new JPanel();
-		
 		inputPanel.setAlignmentX(CENTER_ALIGNMENT);
 		inputPanel.setPreferredSize(new Dimension(200, 150));
 		add(inputPanel);
 		
 		space = new JLabel("                   "); inputPanel.add(space);
 		userName = new JTextField(15); inputPanel.add(userName);
-		password = new JPasswordField(15); inputPanel.add(password); password.addKeyListener(this);
+		password = new JPasswordField(15); inputPanel.add(password);
 		logInButton = new JButton("Log in"); inputPanel.add(logInButton);
 		logInButton.addActionListener(this);
-		
 		
 		setIconImage(imglogo.getImage());
 		setTitle("AutoTotaalDiensten - Inloggen"); 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setVisible(true);
-		
+		setVisible(true);	
 	}
 
 	@Override
@@ -71,57 +66,17 @@ public class LogIn extends JFrame implements ActionListener, KeyListener {
 		s = userName.getText();
 		char[] p = password.getPassword();
 		String a = String.copyValueOf(p);
-		if(click.getSource() == logInButton && s.equals("") && a.equals(""))
-		{
+		
+		if(click.getSource() == logInButton && s.equals("admin") && a.equals("admin")) {
 			WelkomFrame welkom = new WelkomFrame(hetBedrijf);
 			this.dispose();
-		} 
-		
-		else
-		{
+		} else {
 			 JOptionPane.showMessageDialog(null, "De login bestaat niet.");
-		}
-		
-		
+		}	
 	}
 
-	@Override
-	public void keyPressed(KeyEvent type) {
-		s = userName.getText();
-		char[] p = password.getPassword();
-		String a = String.copyValueOf(p);
-		if(type.getKeyCode() == KeyEvent.VK_ENTER && s.equals("admin") && a.equals("admin")){
-			Hoofdmenu ingelogd = new Hoofdmenu(hetBedrijf);
-			this.dispose();
-
-		}
-		
-		if(type.getKeyCode() == KeyEvent.VK_ENTER && !s.equals("admin") && !a.equals("admin")){
-			 JOptionPane.showMessageDialog(null, "De login bestaat niet.");
-		}
-		
-		if(type.getKeyCode() == KeyEvent.VK_ENTER && s.equals("admin") && !a.equals("admin")){
-			 JOptionPane.showMessageDialog(null, "De login bestaat niet.");
-		}
-		
-		if(type.getKeyCode() == KeyEvent.VK_ENTER && !s.equals("admin") && a.equals("admin")){
-			 JOptionPane.showMessageDialog(null, "De login bestaat niet.");
-		}
-		
-	}
-		
 	public void setHetBoek(Bedrijf nwb) { 
 		hetBedrijf = nwb;
 	} 
 
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent type) {
-		
-	}
 }

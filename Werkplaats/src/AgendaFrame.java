@@ -10,8 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
-
-public class AgendaFrame extends Hoofdmenu implements ActionListener{
+public class AgendaFrame extends Hoofdmenu implements ActionListener {
 	private static String[] dag = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", 
 		"16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
 	private static String[] maand = {"1", "2", "3", "4", "5", "6", 
@@ -25,7 +24,7 @@ public class AgendaFrame extends Hoofdmenu implements ActionListener{
 	private JButton opvragen;
 	JLabel lDag, lMaand, lJaar;
 	
-	public AgendaFrame(Bedrijf b){
+	public AgendaFrame(Bedrijf b) {
 		super(b);
 		setTitle("AutoTotaalDiensten - Agenda");
 		Container cp = getContentPane();
@@ -34,7 +33,6 @@ public class AgendaFrame extends Hoofdmenu implements ActionListener{
 		GridBagConstraints c = new GridBagConstraints();
 
 		//Labels, Comboboxen en button worden toegevoegd aan de container
-		
 		lDag = new JLabel("Dag");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridy = 2;
@@ -60,9 +58,9 @@ public class AgendaFrame extends Hoofdmenu implements ActionListener{
 		cp.add(opvragen, c);
 	}
 	
-	public void actionPerformed(ActionEvent click){
-		if(click.getSource() == opvragen)
-		{
+	public void actionPerformed(ActionEvent click) {
+		if(click.getSource() == opvragen) {
+			//Datum ophalen
 			String dg = boxDag.getSelectedItem().toString();
 			String md = boxMaand.getSelectedItem().toString();
 			String jr = boxJaar.getSelectedItem().toString();
@@ -83,26 +81,27 @@ public class AgendaFrame extends Hoofdmenu implements ActionListener{
 			
 			for (Klus k : hetBedrijf.alleKlussen) {
 				if(select.equals(k.getDatum()) || select2.equals(k.getDatum()) || select3.equals(k.getDatum())
-						|| select4.equals(k.getDatum()) || select5.equals(k.getDatum()) 
-						|| select6.equals(k.getDatum()) || select7.equals(k.getDatum())
-						|| select8.equals(k.getDatum()))
+					|| select4.equals(k.getDatum()) || select5.equals(k.getDatum()) 
+					|| select6.equals(k.getDatum()) || select7.equals(k.getDatum())
+					|| select8.equals(k.getDatum()))
 				{
 					//Pop-up die alle klussen toont + optie om aan te passen.	
 					Object[] options = {"Oke", "Klus aanpassen" };
 					int bevestingOptie = JOptionPane.showOptionDialog(null,
-							"Klussen op deze datum: \n " + "- " + k, "",
-							JOptionPane.YES_NO_OPTION,
-							JOptionPane.INFORMATION_MESSAGE,
-							null,
-							options,
-							options[1]);
-					if(bevestingOptie == JOptionPane.NO_OPTION)
-					{
+						"Klussen op deze datum: \n " + "- " + k, "",
+						JOptionPane.YES_NO_OPTION,
+						JOptionPane.INFORMATION_MESSAGE,
+						null,
+						options,
+						options[1]
+					);
+					
+					if(bevestingOptie == JOptionPane.NO_OPTION) {
 						KlusOverzichtFrame klusoverzicht = new KlusOverzichtFrame(hetBedrijf);
 						this.dispose();
 					}
-					if(bevestingOptie == JOptionPane.YES_OPTION)
-					{
+					
+					if(bevestingOptie == JOptionPane.YES_OPTION) {
 						break;
 					}
 				}
@@ -117,6 +116,8 @@ public class AgendaFrame extends Hoofdmenu implements ActionListener{
 			}
 
 		}
+		
+		//Menu actionlisteners
 		if(click.getSource() == menuItemAgenda1){
 			AgendaFrame agenda = new AgendaFrame(hetBedrijf);
 			this.dispose();

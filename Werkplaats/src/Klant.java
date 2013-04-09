@@ -14,82 +14,85 @@ public class Klant {
 		telnummer = telnr;	
 	}
 	
-	public Klant(String vnm, String anm){
+	public Klant(String vnm, String anm) {
 		voornaam = vnm;
 		achternaam = anm;
 	}
 
+	//Getters
 	public String getVoornaam() {
 		return voornaam;
-	}
-
-	public void setVoornaam(String voornaam) {
-		this.voornaam = voornaam;
 	}
 
 	public String getAchternaam() {
 		return achternaam;
 	}
 
-	public void setAchternaam(String achternaam) {
-		this.achternaam = achternaam;
-	}
-
 	public String getPostcode() {
 		return postcode;
-	}
-
-	public void setPostcode(String postcode) {
-		this.postcode = postcode;
 	}
 
 	public String getHuisnr() {
 		return huisnr;
 	}
-
-	public void setHuisnr(String huisnr) {
-		this.huisnr = huisnr;
-	}
-
+	
 	public String getPlaats() {
 		return plaats;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public String getTelnummer() {
+		return telnummer;
+	}
+	
+	public Auto getAuto() {
+		return auto;
+	}	
+	
+	//Setters
+	public void setVoornaam(String voornaam) {
+		this.voornaam = voornaam;
+	}
+	
+	public void setAchternaam(String achternaam) {
+		this.achternaam = achternaam;
+	}
+	
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
+	}
+	
+	public void setHuisnr(String huisnr) {
+		this.huisnr = huisnr;
 	}
 
 	public void setPlaats(String plaats) {
 		this.plaats = plaats;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public String getTelnummer() {
-		return telnummer;
-	}
-
 	public void setTelnummer(String telnummer) {
 		this.telnummer = telnummer;
-	}
-		
-	public Auto getAuto() {
-		return auto;
 	}
 
 	public void setAuto(Auto auto) {
 		this.auto = auto;
 	}
 
-	public String toString(){
+	//ToString
+	public String toString() {
 		String s = voornaam + " " + achternaam;
 		return s;
 		
 	}
 	
-	public String toStringAlleGegevens(){
+	public String toStringAlleGegevens() {
 		String aG = voornaam + " " + achternaam + ". \n " + postcode + " " + huisnr + " " + plaats + ". \n " + email + ", " + telnummer; 
 		return aG;
 	}
