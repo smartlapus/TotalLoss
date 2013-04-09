@@ -56,7 +56,7 @@ public class Klus {
 	
 	//ToString
 	public String toString(){
-		String s = naam + " " + werkzaamheden + " " + kenteken + " " + datum;
+		String s = naam + ": " + werkzaamheden + " (" + datum + ")";
 		return s;
 		
 	}

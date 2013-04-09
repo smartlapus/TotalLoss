@@ -46,11 +46,14 @@ public class Main {
 		
 		//Klus toevoegen
 		Klus kl1 = new Klus("APK", "Bandenspanning opnemen", "07-OP-13", "01-01-2011");
-		Klus kl2 = new Klus("Cruisecontrol", "Installeren", "TI-02-MN", "11-04-2013");
+		Klus kl2 = new Klus("APK", "Deuren maken", "07-OP-13", "01-01-2011");
+		Klus kl3 = new Klus("Cruisecontrol", "Installeren", "TI-02-MN", "11-04-2013");
 		kl1.setMonteur(m1);
-		kl2.setMonteur(m2);
+		kl2.setMonteur(m1);
+		kl3.setMonteur(m2);
 		hetBedrijf.voegKlusToe(kl1);
 		hetBedrijf.voegKlusToe(kl2);
+		hetBedrijf.voegKlusToe(kl3);
 	
 		LogIn log = new LogIn(hetBedrijf);	
 	}

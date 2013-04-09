@@ -1,14 +1,20 @@
+import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.*;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 public class AgendaFrame extends Hoofdmenu implements ActionListener {
 	private static String[] dag = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", 
@@ -22,96 +28,60 @@ public class AgendaFrame extends Hoofdmenu implements ActionListener {
 	private JComboBox boxMaand = new JComboBox(maand);
 	private JComboBox boxJaar = new JComboBox(jaar);
 	private JButton opvragen;
+	private JTable tabel;
 	JLabel lDag, lMaand, lJaar;
+	
+	private DefaultTableModel model = new DefaultTableModel(
+			new Object[][] { { "", "", "" } }, new Object[] { "Klus", "Werkzaamheden", "Monteur" });
 	
 	public AgendaFrame(Bedrijf b) {
 		super(b);
 		setTitle("AutoTotaalDiensten - Agenda");
-		Container cp = getContentPane();
-		cp.setLayout(new GridBagLayout());
-		cp.setBackground(UIManager.getColor("control"));
-		GridBagConstraints c = new GridBagConstraints();
-
+		setLayout(new FlowLayout());
+		
 		//Labels, Comboboxen en button worden toegevoegd aan de container
-		lDag = new JLabel("Dag");
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridy = 2;
-		cp.add(lDag, c);
 		
-		lMaand = new JLabel("Maand");
-		c.fill = GridBagConstraints.HORIZONTAL;
-		cp.add(lMaand, c);
-		
-		lJaar = new JLabel("Jaar");
-		c.fill = GridBagConstraints.HORIZONTAL;
-		cp.add(lJaar, c);
-		
-		cp.add(boxDag);cp.add(boxMaand);cp.add(boxJaar);
+		add(boxDag); 
+		add(boxMaand);  
+		add(boxJaar); 
 		
 		opvragen = new JButton("Opvragen");
 		opvragen.addActionListener(this);
+		add(opvragen);
 		
-		c.weightx = 0.0;
-		c.gridwidth = 0;
-		c.gridx = 0;
-		c.gridy = 4;
-		cp.add(opvragen, c);
+		tabel = new JTable(model); 
+		add(new JScrollPane(tabel));
+	}
+	
+	//ClearTable functie
+	public void clearTable() {
+		while (tabel.getRowCount() > 0) {
+            ((DefaultTableModel) tabel.getModel()).removeRow(0);
+        }
 	}
 	
 	public void actionPerformed(ActionEvent click) {
 		if(click.getSource() == opvragen) {
+			
 			//Datum ophalen
 			String dg = boxDag.getSelectedItem().toString();
 			String md = boxMaand.getSelectedItem().toString();
 			String jr = boxJaar.getSelectedItem().toString();
 			
-			String dgLang = "0" + boxDag.getSelectedItem().toString();
-			String mdLang = "0" + boxMaand.getSelectedItem().toString();
-			String jrKort = boxJaar.getSelectedItem().toString(); 
-			jrKort = jrKort.replace("20", "");
+			//Formatten
+			DecimalFormat df = new DecimalFormat("00");
+			dg = df.format(Integer.parseInt(dg));
+			md = df.format(Integer.parseInt(md));
+			jr = df.format(Integer.parseInt(jr));
 			
 			String select  = dg + "-" + md + "-" + jr;
 			String select2 = dg + "/" + md + "/" + jr;
-			String select3  = dg + "-" + md + "-" + jrKort;
-			String select4 = dg + "/" + md + "/" + jrKort;
-			String select5 = dgLang + "-" + mdLang + "-" + jrKort;
-			String select6 = dgLang + "/" + mdLang + "/" + jrKort;
-			String select7 = dgLang + "-" + mdLang + "-" + jr;
-			String select8 = dgLang + "/" + mdLang + "/" + jr;
+			
+			clearTable();
 			
 			for (Klus k : hetBedrijf.alleKlussen) {
-				if(select.equals(k.getDatum()) || select2.equals(k.getDatum()) || select3.equals(k.getDatum())
-					|| select4.equals(k.getDatum()) || select5.equals(k.getDatum()) 
-					|| select6.equals(k.getDatum()) || select7.equals(k.getDatum())
-					|| select8.equals(k.getDatum()))
-				{
-					//Pop-up die alle klussen toont + optie om aan te passen.	
-					Object[] options = {"Oke", "Klus aanpassen" };
-					int bevestingOptie = JOptionPane.showOptionDialog(null,
-						"Klussen op deze datum: \n " + "- " + k, "",
-						JOptionPane.YES_NO_OPTION,
-						JOptionPane.INFORMATION_MESSAGE,
-						null,
-						options,
-						options[1]
-					);
-					
-					if(bevestingOptie == JOptionPane.NO_OPTION) {
-						KlusOverzichtFrame klusoverzicht = new KlusOverzichtFrame(hetBedrijf);
-						this.dispose();
-					}
-					
-					if(bevestingOptie == JOptionPane.YES_OPTION) {
-						break;
-					}
-				}
-				else if(!select.equals(k.getDatum()) || !select2.equals(k.getDatum()) 
-						|| !select3.equals(k.getDatum()) || !select4.equals(k.getDatum())
-						|| !select5.equals(k.getDatum()) || !select6.equals(k.getDatum())
-						|| !select7.equals(k.getDatum()) || !select8.equals(k.getDatum()))
-				{
-					JOptionPane.showMessageDialog(null, "Er zijn geen klussen op deze datum");
-					break;
+				if(select.equals(k.getDatum()) || select2.equals(k.getDatum())) {
+					model.addRow(new Object[]{k.getNaam(), k.getWerkzaamheden(), k.getDatum()});
 				}
 			}
 

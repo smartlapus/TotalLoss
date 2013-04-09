@@ -68,8 +68,6 @@ public class KlusToevoegenFrame extends Hoofdmenu implements ActionListener {
 				JOptionPane.showMessageDialog(null, "AUB alle velden invoeren");
 			} else if(vnm.matches(".*[0-9].*")) {
 				JOptionPane.showMessageDialog(null, "De naam van de klus mag geen cijfer bevatten.");
-			} else if(!dat.matches("^\\d*$")) {
-				JOptionPane.showMessageDialog(null, "Een datum bestaat uit cijfers, behalve die van jou.");
 			} else if (obj instanceof Monteur) {
 				hetBedrijf.voegKlusToe(nwk);
 				nwk.setMonteur(m);
