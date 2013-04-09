@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
 import java.awt.*;
+import java.text.DecimalFormat;
 
 public class KlusToevoegenFrame extends Hoofdmenu implements ActionListener {
 	private JLabel naam, werkzaamheden, kenteken, datum;
@@ -53,7 +54,11 @@ public class KlusToevoegenFrame extends Hoofdmenu implements ActionListener {
 			JOptionPane.showMessageDialog(null, "Toevoegen is geannuleerd");
 		}
 		
+		
+		
+		
 		if(click.getSource() == savebutton) {
+			
 			Klus nwk = null; 
 			Object obj = dropDownMonteurs.getSelectedItem();
 			Monteur m = (Monteur)obj;
@@ -63,10 +68,18 @@ public class KlusToevoegenFrame extends Hoofdmenu implements ActionListener {
 			String dat = tfDatum.getText();
 			nwk = new Klus(vnm, werk, kent, dat);
 			
+		
+			int date_check = tfDatum.getText().length();
+			
 			//Input Checks
 			if(vnm.equals("") || werk.equals("") || kent.equals("") || dat.equals("")) {
 				JOptionPane.showMessageDialog(null, "AUB alle velden invoeren");
-			} else if(vnm.matches(".*[0-9].*")) {
+			} 
+			else if(date_check < 10)
+			{
+				JOptionPane.showMessageDialog(null, "Datum format: dd-mm-yyyy");
+			}
+			else if(vnm.matches(".*[0-9].*")) {
 				JOptionPane.showMessageDialog(null, "De naam van de klus mag geen cijfer bevatten.");
 			} else if (obj instanceof Monteur) {
 				hetBedrijf.voegKlusToe(nwk);

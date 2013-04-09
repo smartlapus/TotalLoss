@@ -81,7 +81,7 @@ public class AgendaFrame extends Hoofdmenu implements ActionListener {
 			
 			for (Klus k : hetBedrijf.alleKlussen) {
 				if(select.equals(k.getDatum()) || select2.equals(k.getDatum())) {
-					model.addRow(new Object[]{k.getNaam(), k.getWerkzaamheden(), k.getDatum()});
+					model.addRow(new Object[]{k.getNaam(), k.getWerkzaamheden(), k.getMonteur()});
 				}
 			}
 
