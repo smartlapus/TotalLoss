@@ -132,14 +132,11 @@ public class KlantOverzichtFrame extends Hoofdmenu implements ActionListener{
 					if(option == JOptionPane.YES_OPTION){
 						hetBedrijf.verwijderKlant(k);
 						JOptionPane.showMessageDialog(null, "Klant '" + k + "' is verwijderd.");
-						
 					}
 					else{
 						return;
 					}
 					
-					
-				
 					KlantOverzichtFrame klantoverzicht = new KlantOverzichtFrame(hetBedrijf);
 					this.dispose();
 				}
@@ -147,22 +144,40 @@ public class KlantOverzichtFrame extends Hoofdmenu implements ActionListener{
 		  
 		  if (click.getSource() == slaOp){
 			  Object obj = dropDownKlanten.getSelectedItem();
-				if (obj instanceof Klant){
-					Klant k = (Klant)obj;
-					k.setVoornaam(tfVoor.getText());
-					k.setAchternaam(tfAchter.getText());
-					k.setEmail(tfEmail.getText());
-					k.setPostcode(tfPostcode.getText());
-					k.setHuisnr(tfHuisnummer.getText());
-					k.setPlaats(tfPlaats.getText());
-					k.setTelnummer(tfTelnummer.getText());
-					k.auto.setMerk(tfAutomerk.getText());
-					k.auto.setType(tfAutotype.getText());
-					k.auto.setBouwjaar(tfAutojaar.getText());
-					JOptionPane.showMessageDialog(null, "Klant is succesvol aangepast");
-					KlantOverzichtFrame klantoverzicht = new KlantOverzichtFrame(hetBedrijf);
-					this.dispose();
+				
+					if(tfVoor.getText().equals("") || tfAchter.getText().equals("") || tfEmail.getText().equals("") 
+							 || tfPostcode.getText().equals("") || tfHuisnummer.getText().equals("") 
+							 || tfPlaats.getText().equals("") || tfTelnummer.getText().equals("") 
+							 || tfAutomerk.getText().equals("") || tfAutotype.getText().equals("") 
+							 || tfAutojaar.getText().equals(""))
+					{
+						JOptionPane.showMessageDialog(null, "AUB alle velden invoeren");
 					}
+					
+					if(tfVoor.getText().matches(".*[0-9].*") || tfAchter.getText().matches(".*[0-9].*") 
+							|| tfPlaats.getText().matches(".*[0-9].*")  
+							|| tfAutomerk.getText().matches(".*[0-9].*"))
+					{
+						JOptionPane.showMessageDialog(null, "U heeft een cijfer ingevuld bij één of meerdere velden: \n"
+								+ tfVoor.getText() + "\n" + tfAchter.getText() + "\n" + tfPlaats.getText() + "\n" 
+								+ tfAutomerk.getText());
+					}
+					else if (obj instanceof Klant){
+						Klant k = (Klant)obj;
+						k.setVoornaam(tfVoor.getText());
+						k.setAchternaam(tfAchter.getText());
+						k.setEmail(tfEmail.getText());
+						k.setPostcode(tfPostcode.getText());
+						k.setHuisnr(tfHuisnummer.getText());
+						k.setPlaats(tfPlaats.getText());
+						k.setTelnummer(tfTelnummer.getText());
+						k.auto.setMerk(tfAutomerk.getText());
+						k.auto.setType(tfAutotype.getText());
+						k.auto.setBouwjaar(tfAutojaar.getText());
+						JOptionPane.showMessageDialog(null, "Klant is succesvol aangepast");
+						KlantOverzichtFrame klantoverzicht = new KlantOverzichtFrame(hetBedrijf);
+						this.dispose();
+				}
 		  }
 		  
 		  if(click.getSource() == menuItemAgenda1){

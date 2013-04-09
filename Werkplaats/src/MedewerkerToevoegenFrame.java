@@ -101,7 +101,8 @@ public class MedewerkerToevoegenFrame extends Hoofdmenu implements ActionListene
 			JOptionPane.showMessageDialog(null, "Toevoegen is geannuleerd");
 		}
 		
-		if(click.getSource() == savebutton){
+		if(click.getSource() == savebutton)
+		{
 			Monteur nwm = null; 
 			String vnm = naaminvoer.getText();  
 			String anm = achternaaminvoer.getText();
@@ -112,11 +113,28 @@ public class MedewerkerToevoegenFrame extends Hoofdmenu implements ActionListene
 			String telnr = telnummerinvoer.getText();
 			String bsn = bsninvoer.getText();
 			String reknr = reknummerinvoer.getText();
-			nwm = new Monteur(vnm, anm, pcode, huisnr, plts, mail, telnr, bsn, reknr);
-			hetBedrijf.voegMonteurToe(nwm);
-			JOptionPane.showMessageDialog(null, "Klant is succesvol toegevoegd");
-			MedewerkerOverzichtFrame medewerkeroverzicht = new MedewerkerOverzichtFrame(hetBedrijf);
-			this.dispose();
+			if(vnm.equals("") || anm.equals("") || anm.equals("") || pcode.equals("") || huisnr.equals("") 
+					 || plts.equals("") || mail.equals("") || telnr.equals("") || bsn.equals("") 
+					 || reknr.equals(""))
+			{
+				JOptionPane.showMessageDialog(null, "AUB alle velden invoeren");
+			}
+			
+			if(vnm.matches(".*[0-9].*") || anm.matches(".*[0-9].*") || plts.matches(".*[0-9].*"))
+			{
+				JOptionPane.showMessageDialog(null, "U heeft een cijfer ingevuld bij één of meerdere velden: \n"
+						+ vnm + "\n" + anm + "\n" + plts);
+			}
+			else if(!vnm.equals("") && !anm.equals("") && !anm.equals("") && !pcode.equals("") && !huisnr.equals("") 
+					 && !plts.equals("") && !mail.equals("") && !telnr.equals("") && !bsn.equals("") 
+					 && !reknr.equals(""))
+			{
+				nwm = new Monteur(vnm, anm, pcode, huisnr, plts, mail, telnr, bsn, reknr);
+				hetBedrijf.voegMonteurToe(nwm);
+				JOptionPane.showMessageDialog(null, "Klant is succesvol toegevoegd");
+				MedewerkerOverzichtFrame medewerkeroverzicht = new MedewerkerOverzichtFrame(hetBedrijf);
+				this.dispose();
+			}
 		}
 		
 		

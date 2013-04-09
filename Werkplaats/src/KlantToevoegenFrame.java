@@ -118,13 +118,33 @@ public class KlantToevoegenFrame extends Hoofdmenu implements ActionListener{
 			String merk = merkinvoer.getText();
 			String type = typeinvoer.getText();
 			String bouwjaar = bouwjaarinvoer.getText();
-			nwk = new Klant(vnm, anm, pcode, huisnr, plts, mail, telnr);
-			nwa = new Auto(merk, type, bouwjaar);
-			hetBedrijf.voegKlantToe(nwk);
-			nwk.setAuto(nwa);
-			JOptionPane.showMessageDialog(null, "Klant is succesvol toegevoegd");
-			KlantOverzichtFrame klantoverzicht = new KlantOverzichtFrame(hetBedrijf);
-			this.dispose();
+			
+			if(vnm.equals("") || anm.equals("") || anm.equals("") || pcode.equals("") || huisnr.equals("") 
+					 || plts.equals("") || mail.equals("") || telnr.equals("") || merk.equals("") 
+					 || type.equals("") || bouwjaar.equals(""))
+			{
+				JOptionPane.showMessageDialog(null, "AUB alle velden invoeren");
+			}
+			
+			if(vnm.matches(".*[0-9].*") || anm.matches(".*[0-9].*") || plts.matches(".*[0-9].*")  
+					|| merk.matches(".*[0-9].*"))
+			{
+				JOptionPane.showMessageDialog(null, "U heeft een cijfer ingevuld bij één of meerdere velden: \n"
+						+ vnm + "\n" + anm + "\n" + plts + "\n" + merk);
+			}
+			
+			else if(!vnm.equals("") && !anm.equals("") && !anm.equals("") && !pcode.equals("") && !huisnr.equals("") 
+					 && !plts.equals("") && !mail.equals("") && !telnr.equals("") && !merk.equals("") 
+					 && !type.equals("") && !bouwjaar.equals(""))
+			{
+				nwk = new Klant(vnm, anm, pcode, huisnr, plts, mail, telnr);
+				nwa = new Auto(merk, type, bouwjaar);
+				hetBedrijf.voegKlantToe(nwk);
+				nwk.setAuto(nwa);
+				JOptionPane.showMessageDialog(null, "Klant is succesvol toegevoegd");
+				KlantOverzichtFrame klantoverzicht = new KlantOverzichtFrame(hetBedrijf);
+				this.dispose();
+			}
 		}
 		
 		//Menu actionlisteners

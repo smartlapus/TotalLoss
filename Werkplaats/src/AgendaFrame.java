@@ -87,9 +87,7 @@ public class AgendaFrame extends Hoofdmenu implements ActionListener{
 						|| select6.equals(k.getDatum()) || select7.equals(k.getDatum())
 						|| select8.equals(k.getDatum()))
 				{
-					
-					//Pop-up die alle klussen toont + optie om aan te passen.
-					
+					//Pop-up die alle klussen toont + optie om aan te passen.	
 					Object[] options = {"Oke", "Klus aanpassen" };
 					int n = JOptionPane.showOptionDialog(null,
 					    "Klussen op deze datum: \n " + "- " + k, "",

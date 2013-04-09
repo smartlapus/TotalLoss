@@ -141,22 +141,39 @@ public class MedewerkerOverzichtFrame extends Hoofdmenu implements ActionListene
 		  
 		  
 		  
-		  if (click.getSource() == slaOp){
+		  if (click.getSource() == slaOp)
+		  {
 			  Object obj = dropDownMedewerkers.getSelectedItem();
-				if (obj instanceof Monteur){
-					Monteur k = (Monteur)obj;
-					k.setVoornaam(tfVoor.getText());
-					k.setAchternaam(tfAchter.getText());
-					k.setEmail(tfEmail.getText());
-					k.setPostcode(tfPostcode.getText());
-					k.setHuisnr(tfHuisnummer.getText());
-					k.setPlaats(tfPlaats.getText());
-					k.setTelnummer(tfTelnummer.getText());
-					k.setBsnnr(tfBSN.getText());
-					k.setReknummer(tfReknummer.getText());
-					JOptionPane.showMessageDialog(null, "Medewerker is succesvol aangepast");
-					MedewerkerOverzichtFrame medewerkeroverzicht = new MedewerkerOverzichtFrame(hetBedrijf);
-					this.dispose();
+			
+					if(tfVoor.getText().equals("") || tfAchter.getText().equals("") || tfEmail.getText().equals("") 
+							 || tfPostcode.getText().equals("") || tfHuisnummer.getText().equals("") 
+							 || tfPlaats.getText().equals("") || tfTelnummer.getText().equals("") 
+							 || tfBSN.getText().equals("") || tfReknummer.getText().equals(""))
+					{
+						JOptionPane.showMessageDialog(null, "AUB alle velden invoeren");
+					}
+					
+					if(tfVoor.getText().matches(".*[0-9].*") || tfAchter.getText().matches(".*[0-9].*") 
+							|| tfPlaats.getText().matches(".*[0-9].*"))
+					{
+						JOptionPane.showMessageDialog(null, "U heeft een cijfer ingevuld bij één of meerdere velden: \n"
+								+ tfVoor.getText() + "\n" + tfAchter.getText() + "\n" + tfPlaats.getText());
+					}
+				    else if (obj instanceof Monteur)
+					{
+				    	Monteur k = (Monteur)obj;
+						k.setVoornaam(tfVoor.getText());
+						k.setAchternaam(tfAchter.getText());
+						k.setEmail(tfEmail.getText());
+						k.setPostcode(tfPostcode.getText());
+						k.setHuisnr(tfHuisnummer.getText());
+						k.setPlaats(tfPlaats.getText());
+						k.setTelnummer(tfTelnummer.getText());
+						k.setBsnnr(tfBSN.getText());
+						k.setReknummer(tfReknummer.getText());
+						JOptionPane.showMessageDialog(null, "Medewerker is succesvol aangepast");
+						MedewerkerOverzichtFrame medewerkeroverzicht = new MedewerkerOverzichtFrame(hetBedrijf);
+						this.dispose();
 					}
 		  }
 		  
