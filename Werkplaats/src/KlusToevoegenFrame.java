@@ -56,18 +56,33 @@ public class KlusToevoegenFrame extends Hoofdmenu implements ActionListener{
 		if(click.getSource() == savebutton){
 			Klus nwk = null; 
 			Object obj = dropDownMonteurs.getSelectedItem();
-			if (obj instanceof Monteur){
-				Monteur m = (Monteur)obj;
+			Monteur m = (Monteur)obj;
 			String vnm = tfNaam.getText();  
 			String werk = tfWerkzaamheden.getText(); 
 			String kent = tfKenteken.getText(); 
 			String dat = tfDatum.getText();
 			nwk = new Klus(vnm, werk, kent, dat);
-			hetBedrijf.voegKlusToe(nwk);
-			nwk.setMonteur(m);
-			JOptionPane.showMessageDialog(null, "Klus is succesvol toegevoegd");
-			KlusOverzichtFrame klusoverzicht = new KlusOverzichtFrame(hetBedrijf);
-			this.dispose();
+			
+			if(vnm.equals("") || werk.equals("") || kent.equals("") || dat.equals(""))
+			{
+				JOptionPane.showMessageDialog(null, "AUB alle velden invoeren");
+			}
+			
+			if(vnm.matches(".*[0-9].*"))
+			{
+				JOptionPane.showMessageDialog(null, "De naam van de klus mag geen cijfer bevatten.");
+			}
+			if(!dat.matches("^\\d*$"))
+			{
+				JOptionPane.showMessageDialog(null, "Een datum bestaat uit cijfers, behalve die van jou.");
+			}
+			else if (obj instanceof Monteur)
+			{
+				hetBedrijf.voegKlusToe(nwk);
+				nwk.setMonteur(m);
+				JOptionPane.showMessageDialog(null, "Klus is succesvol toegevoegd");
+				KlusOverzichtFrame klusoverzicht = new KlusOverzichtFrame(hetBedrijf);
+				this.dispose();
 			}
 			
 		}

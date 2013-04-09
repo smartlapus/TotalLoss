@@ -43,6 +43,13 @@ public class Main {
 		hetBedrijf.voegFinancienToe(f7);
 		hetBedrijf.voegFinancienToe(f8);
 		
+		Klus kl1 = new Klus("APK", "Bandenspanning opnemen", "07-OP-13", "01-01-2011");
+		Klus kl2 = new Klus("Cruisecontrol", "Installeren", "TI-02-MN", "11-04-2013");
+		kl1.setMonteur(m1);
+		kl2.setMonteur(m2);
+		hetBedrijf.voegKlusToe(kl1);
+		hetBedrijf.voegKlusToe(kl2);
+		
 		LogIn log = new LogIn(hetBedrijf);
 		
 	}
