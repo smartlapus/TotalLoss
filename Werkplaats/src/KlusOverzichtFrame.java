@@ -62,7 +62,7 @@ public class KlusOverzichtFrame extends Hoofdmenu implements ActionListener{
 	
 	private void onSelectedItemChanged()
 	{
-		Object obj = dropDownKlus.getSelectedItem();
+		Object obj = dropDownKlus.getSelectedItem(); // test
 		if (obj instanceof Klus)
 		{
 			Klus k = (Klus)obj;

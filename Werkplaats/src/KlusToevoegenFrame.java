@@ -25,7 +25,7 @@ public class KlusToevoegenFrame extends Hoofdmenu implements ActionListener{
 		
 		
 	    
-	    JLabel l1 = new JLabel("Naam: "); contactPanel.add(l1);
+	    JLabel l1 = new JLabel("Naam: "); contactPanel.add(l1); // test
 		  tfNaam = new JTextField(9); contactPanel.add(tfNaam);  
 		  
 		  JLabel l2 = new JLabel("Werkzaamheen: "); contactPanel.add(l2); 
