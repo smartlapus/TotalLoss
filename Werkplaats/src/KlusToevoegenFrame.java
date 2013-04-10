@@ -47,10 +47,10 @@ public class KlusToevoegenFrame extends Hoofdmenu implements ActionListener {
 	
 	public void actionPerformed(ActionEvent click) {
 		if(click.getSource() == cancelbutton) {
-			naamInvoer.setText("");
-			werkzaamhedenInvoer.setText("");
-			kentekenInvoer.setText("");
-			datumInvoer.setText("");
+			tfNaam.setText("");
+			tfWerkzaamheden.setText("");
+			tfKenteken.setText("");
+			tfDatum.setText("");
 			JOptionPane.showMessageDialog(null, "Toevoegen is geannuleerd");
 		}
 		
