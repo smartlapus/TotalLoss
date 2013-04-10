@@ -23,7 +23,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-public class LogIn extends JFrame implements ActionListener {
+public class LogIn extends JFrame implements ActionListener, KeyListener {
 	private static final long serialVersionUID = -6748834332506278417L;
 	private JTextField userName;
 	private JPasswordField password;
@@ -54,6 +54,8 @@ public class LogIn extends JFrame implements ActionListener {
 		password = new JPasswordField(15); inputPanel.add(password);
 		logInButton = new JButton("Log in"); inputPanel.add(logInButton);
 		logInButton.addActionListener(this);
+		userName.addKeyListener(this);
+		password.addKeyListener(this);
 		
 		setIconImage(imglogo.getImage());
 		setTitle("AutoTotaalDiensten - Inloggen"); 
@@ -74,9 +76,48 @@ public class LogIn extends JFrame implements ActionListener {
 			 JOptionPane.showMessageDialog(null, "De login bestaat niet.");
 		}	
 	}
+	
+		@Override
+		public void keyPressed(KeyEvent type) {
+			s = userName.getText();
+			char[] p = password.getPassword();
+			String a = String.copyValueOf(p);
+			if(type.getKeyCode() == KeyEvent.VK_ENTER && s.equals("admin") && a.equals("admin")){
+				WelkomFrame welkom = new WelkomFrame(hetBedrijf);
+				this.dispose();
+	
+			}
+			
+			if(type.getKeyCode() == KeyEvent.VK_ENTER && !s.equals("admin") && !a.equals("admin")){
+				 JOptionPane.showMessageDialog(null, "De login bestaat niet.");
+			}
+			
+			if(type.getKeyCode() == KeyEvent.VK_ENTER && s.equals("admin") && !a.equals("admin")){
+				 JOptionPane.showMessageDialog(null, "De login bestaat niet.");
+			}
+			
+			if(type.getKeyCode() == KeyEvent.VK_ENTER && !s.equals("admin") && a.equals("admin")){
+				 JOptionPane.showMessageDialog(null, "De login bestaat niet.");
+			}
+			
+		}
+			
+
 
 	public void setHetBoek(Bedrijf nwb) { 
 		hetBedrijf = nwb;
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	} 
 
 }
